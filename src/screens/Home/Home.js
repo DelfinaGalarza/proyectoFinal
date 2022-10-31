@@ -1,7 +1,7 @@
-import { Text, View, FlatList } from 'react-native'
+import { Text, View, FlatList, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import Card from '../../components/Card/Card'
-import {db} from '../../firebase/config'
+import {db, auth} from '../../firebase/config'
 import Post from '../../components/Post/Post'
 
 class Home extends Component {
@@ -13,7 +13,7 @@ class Home extends Component {
     }
 
     componentDidMount(){
-        db.collection('posts').onSnapshot(docs => {
+        db.collection('posts').where('owner', '==', auth.currentUser.email).limit(5).onSnapshot(docs => {
             let posteos = []
             docs.forEach(doc => {
                 posteos.push({
@@ -30,16 +30,24 @@ class Home extends Component {
   
     render() {
         return (
-        <View>
+        <View 
+        style={styles.container}
+        >
             <Text>Home</Text>
             <FlatList
                 data={this.state.allPosts}
                 keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => <Post id={item.id} data={item.data} />}
+                renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data} />}
             />
         </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1
+    }
+})
 
 export default Home

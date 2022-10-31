@@ -1,7 +1,7 @@
 import { Text, View, FlatList } from 'react-native'
 import React, { Component } from 'react'
 
-export default class Products extends Component {
+export default class ProductList extends Component {
 
     constructor(){
         super()
@@ -13,7 +13,7 @@ export default class Products extends Component {
   render() {
     return (
       <View>
-        <Text>Products</Text>
+        <Text>ProductList</Text>
         <FlatList
             data={this.state.products}
             keyExtractor={(item) => item.id.toString()}
