@@ -1,6 +1,5 @@
 import { Text, View, FlatList } from 'react-native'
 import React, { Component } from 'react'
-// import {info} from '../../api/data'
 
 export default class Products extends Component {
 
