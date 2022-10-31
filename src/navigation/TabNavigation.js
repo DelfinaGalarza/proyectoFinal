@@ -1,6 +1,5 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import {NavigationContainer} from '@react-naviation/native'
 import {FontAwesome} from '@expo/vector-icons'
 import Profile from '../screens/Profile/Profile'
 import Posts from '../screens/Posts/Posts'
@@ -11,9 +10,7 @@ const Tab = createBottomTabNavigator()
 
 function TabNavigation() {
 
-    return (
-        <NavigationContainer>
-    
+    return (    
     <Tab.Navigator>
         <Tab.Screen 
         name={'Home'} 
@@ -33,9 +30,7 @@ function TabNavigation() {
             tabBarIcon: () => <FontAwesome name='home' color={'red'} size={32} />,
             headerShown:false
         }} />
-    </Tab.Navigator>
-        </NavigationContainer>
-    
+    </Tab.Navigator>    
 )
 }
 export default TabNavigation
