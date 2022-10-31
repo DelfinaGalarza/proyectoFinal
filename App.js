@@ -18,6 +18,7 @@ export default class App extends Component {
   render(){
     return (
         <MainNavigation initial={this.state.initialScreen} />
+
     );
   }
 }

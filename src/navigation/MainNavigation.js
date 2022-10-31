@@ -1,11 +1,11 @@
-import { View, Text } from 'react-native'
+// import { View, Text } from 'react-native'
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React, {Component} from 'react'
 import Login from '../screens/Login/Login'
 import Register from '../screens/Register/Register'
 import TabNavigation from './TabNavigation'
-import { auth } from '../firebase/Config'
+// import { auth } from '../firebase/Config'
 const Stack = createNativeStackNavigator()
 
 class MainNavigation extends Component {
