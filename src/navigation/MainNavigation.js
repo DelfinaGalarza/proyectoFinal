@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import Login from '../screens/Login/Login'
 import Register from '../screens/Register/Register'
 import TabNavigation from './TabNavigation'
-import { auth } from '../firebase/Config'
+
 const Stack = createNativeStackNavigator()
 
 class MainNavigation extends Component {

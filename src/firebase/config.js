@@ -3,12 +3,12 @@ import firebase from 'firebase';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBR1bGs8mbNW2Jq-ic78qwO2D2XrFshr-Q",
-    authDomain: "prueb-tt.firebaseapp.com",
-    projectId: "prueb-tt",
-    storageBucket: "prueb-tt.appspot.com",
-    messagingSenderId: "228057856152",
-    appId: "1:228057856152:web:7f13eccc6dd24e9cfbf8ed"
+    apiKey: "AIzaSyC0_-mnzoaKOFVpBJRXUT21d4FzU2qsvxc",
+    authDomain: "prog03tt-tp.firebaseapp.com",
+    projectId: "prog03tt-tp",
+    storageBucket: "prog03tt-tp.appspot.com",
+    messagingSenderId: "640737354104",
+    appId: "1:640737354104:web:c8eca25067735f6f00288d"
   };
 
 app.initializeApp(firebaseConfig)
