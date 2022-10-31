@@ -27,7 +27,7 @@ class Home extends Component {
             })
         })
     }
-  
+
     render() {
         return (
         <View 
@@ -39,7 +39,9 @@ class Home extends Component {
                 keyExtractor={(item)=> item.id.toString()}
                 renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data} />}
             />
+
         </View>
+
         )
     }
 }
