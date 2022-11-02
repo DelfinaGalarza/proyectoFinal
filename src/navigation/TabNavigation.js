@@ -16,18 +16,18 @@ function TabNavigation() {
         name={'Home'} 
         component={Home}
         options={{
-            tabBarIcon: () => <FontAwesome name='home' color={'red'} size={32} />,
+            tabBarIcon: () => <FontAwesome name='home' color={'purple'} size={32} />,
             headerShown:false
         }}
         />
         <Tab.Screen name='Profile' component={Profile}
         options={{
-            tabBarIcon: () => <FontAwesome name='home' color={'red'} size={32} />,
+            tabBarIcon: () => <FontAwesome name='home' color={'purple'} size={32} />,
             headerShown:false
         }} />
         <Tab.Screen name='Posts' component={Posts}
         options={{
-            tabBarIcon: () => <FontAwesome name='home' color={'red'} size={32} />,
+            tabBarIcon: () => <FontAwesome name='home' color={'purple'} size={32} />,
             headerShown:false
         }} />
     </Tab.Navigator>    
