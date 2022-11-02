@@ -41,11 +41,7 @@ class MainNavigation extends Component {
                           headerShown:false
                         }}
                         />
-                  {/* <Stack.Screen name='Login'>
-                      {(props) => <Login {...props} otraProp='Pepe' /> }
-                    </Stack.Screen> */}
               </Stack.Navigator>
-              {console.log('Pasa por aqui')}
           </NavigationContainer>
         )
     }

@@ -2,11 +2,12 @@ import { Text, View } from 'react-native'
 import React, { Component } from 'react'
 
 export default class Profile extends Component {
-  render() {
+        
+    render() {
     return (
-      <View>
+        <View>
         <Text>Profile</Text>
-      </View>
+        </View>
     )
-  }
+}
 }

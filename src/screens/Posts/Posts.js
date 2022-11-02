@@ -1,4 +1,4 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity, CameraRoll } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Camara from '../../components/Camara/Camara'
@@ -39,6 +39,7 @@ class Posts extends Component {
             {
                 this.state.mostrarCamara ?
                 <Camara
+
                 cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
                 /> :
                 <>

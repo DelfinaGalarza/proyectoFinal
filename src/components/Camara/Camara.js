@@ -38,9 +38,9 @@ class Camara extends Component {
             const ref = storage.ref(`fotos/${Date.now()}.jpg`)
             ref.put(imagenOk)
             .then(()=>{
-                ref.getDownloadURL()
-                .then((url)=>{
-                    this.props.cuandoSubaLaFoto(url)
+                ref.getDownloadURL() //trae la ruta con la que ahora esta guardada nuestra img en firebase
+                .then((url)=>{ //devuelve url
+                    this.props.cuandoSubaLaFoto(url) 
                 })
             })
         })
