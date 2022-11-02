@@ -1,7 +1,7 @@
 import { Text, View, FlatList } from 'react-native'
 import React, { Component } from 'react'
 
-export default class ProductList extends Component {
+ class Products extends Component {
 
     constructor(){
         super()
@@ -23,3 +23,5 @@ export default class ProductList extends Component {
     )
   }
 }
+
+export default Products

@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 import React, { Component } from 'react'
 
-export default class Profile extends Component {
+ class Profile extends Component {
         
     render() {
     return (
@@ -11,3 +11,5 @@ export default class Profile extends Component {
     )
 }
 }
+
+export default Profile
