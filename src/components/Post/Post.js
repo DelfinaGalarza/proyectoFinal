@@ -12,6 +12,16 @@ class Post extends Component {
             isMyLike: false
         }
     }
+    componentDidMount(){
+        //['Brian', 'Nelson', 'Cami']
+        //  .('Cami')
+        let myLike = this.props.data.likes.includes(auth.currentUser.email)
+        if(myLike){
+            this.setState({
+                isMyLike:true
+            })
+        }
+    }
 
     like(){
         db
