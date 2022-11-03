@@ -13,7 +13,7 @@ class Home extends Component {
     }
 
     componentDidMount(){
-        db.collection('posts').where('owner', '==', auth.currentUser.email).limit(5).onSnapshot(docs => {
+        db.collection('posts').onSnapshot(docs => {
             let posteos = []
             docs.forEach(doc => {
                 posteos.push({
@@ -21,7 +21,7 @@ class Home extends Component {
                     data:doc.data()
                 })
             })
-
+            console.log(posteos)
             this.setState({
                 allPosts: posteos
             })
