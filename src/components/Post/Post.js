@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
@@ -9,7 +9,8 @@ class Post extends Component {
     constructor(props){
         super(props)
         this.state = {
-            isMyLike: false
+            isMyLike: false,
+            // Fotouri: this.props.data.foto
         }
     }
     componentDidMount(){
@@ -18,7 +19,7 @@ class Post extends Component {
         let myLike = this.props.data.likes.includes(auth.currentUser.email)
         if(myLike){
             this.setState({
-                isMyLike:true
+                isMyLike:true,
             })
         }
     }
@@ -55,10 +56,21 @@ class Post extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.container1}>
+            <Text>{this.props.data.owner}</Text>
+        </View>
+        <View style={styles.foto}>
+        <Image style={styles.image} 
+                source={{uri: this.props.data.foto}}
+                resizeMode='contain'/>
+        </View>
+        <View style={styles.container2}>
             <Text style={styles.subtitle}>Descripcion:</Text>
             <Text>{this.props.data.description}</Text>
         </View>
+        
+        
+
         
         {
             this.state.isMyLike ?
@@ -77,17 +89,30 @@ class Post extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        flexDirection: 'row',
-        paddingHorizontal:10,
-        paddingVertical:16,
+        flexDirection: 'column',
+        padding: 10,
         justifyContent:'space-between',
-        marginVertical:16,
-        marginHorizontal:10,
+        alignItems:'center',
+        margin:20,
         borderWidth:.5,
         borderRadius:10
     },
+    container1:{
+        flex:1,
+    },
+    container2:{
+        flex:3
+    },
+    foto:{
+        marginTop:100,
+        height:200,
+        width:200
+    },
     subtitle:{
         fontWeight:700,
+    },
+    image:{
+        height: 200,
     }
 })
 

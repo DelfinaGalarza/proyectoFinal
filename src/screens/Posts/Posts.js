@@ -2,11 +2,12 @@ import { Text, View, TextInput, StyleSheet, TouchableOpacity, CameraRoll } from 
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Camara from '../../components/Camara/Camara'
+import Home from '../Home/Home'
 
 class Posts extends Component {
   
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             description:'',
             mostrarCamara:true,
@@ -14,7 +15,7 @@ class Posts extends Component {
         }
     }
 
-    enviarPost(text){
+    publicarPost(text){
         db.collection('posts').add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
@@ -23,6 +24,8 @@ class Posts extends Component {
             comments:[],
             foto: this.state.fotoUrl
         })
+        .then(()=> {this.props.navigation.navigate('Home')})
+        .catch(err=> console.log(err))
 
     }
 
@@ -50,8 +53,8 @@ class Posts extends Component {
                     keyboardType='default'
                     style={styles.input}
                     />
-                    <TouchableOpacity onPress={()=> this.enviarPost(this.state.description)}>
-                        <Text>Enviar posts</Text>
+                    <TouchableOpacity onPress={()=> this.publicarPost(this.state.description)}>
+                        <Text>PUBLICAR POSTEO</Text>
                     </TouchableOpacity>
                 </>
             }
