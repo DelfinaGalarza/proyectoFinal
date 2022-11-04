@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Card from '../../components/Card/Card'
 import {db, auth} from '../../firebase/config'
 import Post from '../../components/Post/Post'
+import Comments from '../Comments/Comments'
 
 class Home extends Component {
     constructor(){

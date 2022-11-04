@@ -4,6 +4,7 @@ import {FontAwesome} from '@expo/vector-icons'
 import Profile from '../screens/Profile/Profile'
 import Posts from '../screens/Posts/Posts'
 import Home from '../screens/Home/Home'
+import Comments from '../screens/Comments/Comments'
 
 
 const Tab = createBottomTabNavigator()
@@ -26,6 +27,11 @@ function TabNavigation() {
             headerShown:false
         }} />
         <Tab.Screen name='Posts' component={Posts}
+        options={{
+            tabBarIcon: () => <FontAwesome name='home' color={'purple'} size={32} />,
+            headerShown:false
+        }} />
+        <Tab.Screen name='Comments' component={Comments}
         options={{
             tabBarIcon: () => <FontAwesome name='home' color={'purple'} size={32} />,
             headerShown:false

@@ -4,6 +4,7 @@ import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
 
+
 class Post extends Component {
 
     constructor(props){
@@ -69,7 +70,9 @@ class Post extends Component {
             <Text>{this.props.data.description}</Text>
         </View>
         
-        
+        <View>
+            <Text>{this.state.likesCount}</Text>
+      
 
         
         {
@@ -82,6 +85,15 @@ class Post extends Component {
                     <FontAwesome name='heart-o' color='red' size={32} />
                 </TouchableOpacity>
         }
+
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'Comments',
+                {id:this.props.id}
+                )}>
+            <Text>Agregar comentario</Text>
+
+        </TouchableOpacity>
+        </View>
       </View>
     )
   }
