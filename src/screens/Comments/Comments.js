@@ -1,7 +1,8 @@
-import { Text, View, Stylesheet, TextInput, TouchableOpacity, FlatList } from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import Home from '../Home/Home'
 import {db, auth} from "../../firebase/config"
+import firebase from 'firebase'
 
 
 class Comments extends Component {
@@ -9,9 +10,9 @@ class Comments extends Component {
     super (props)
     this.state = {
       id: props.route.params.id,
-      aComments: [],
+      aComentarios: [],
       data: {}, 
-      comentario
+      comentario: ''
     }
   }
 
@@ -19,24 +20,31 @@ class Comments extends Component {
     db
     .collection('posts')
     .doc(this.state.id) //ya tengo claro que voy a recibir solo uno por eso despues no hago foreach
-    .onSnapshot(doc =>{
+    .onSnapshot(doc =>{ //solo tra un doc de regreso
       this.setState ({
-        data: doc.data()
+        data: doc.data(), //se extrae y se guarda 
+        aComentarios: doc.data().comments
       })
     })
   } 
 
-  enviarComentario (comentario){
+  enviarComentarios (com){
     db
     .collection('posts')
     .doc(this.state.id)
     .update({
-      comments: firebase.firestore.FieldValue.arrayUnion({
+        comments: firebase.firestore.FieldValue.arrayUnion({
         owner: auth.currentUser.email, 
         createdAt:Date.now(),
-        comment: comentario
+        comment: com
       })
     })
+    .catch(err => console.log(err))
+    //limpio campo de comentario
+      this.setState({
+        comentario: ''
+      })
+
   }
 
 
@@ -46,7 +54,7 @@ class Comments extends Component {
       <View>
         <Text>Comments</Text>
         <FlatList 
-        data ={this.state.aComments}
+        data ={this.state.aComentarios}
         keyExtractor= {item => item.createdAt.toString()}
         renderItem ={({item}) => <Text>{item.comment}</Text>}
         
@@ -56,22 +64,22 @@ class Comments extends Component {
       placeholder= 'Escribi un comentario' 
       style = {styles.input}
       keyboardType= 'default'
-      onChangeText ={text=> this.setState({comentario: text})}
+      onChangeText ={texto=> this.setState({comentario: texto})}
       value= {this.state.comentario}
       />
-    <TouchableOpacity onPress={()=>this.enviarComentario(this.state.comentario)}>
-      <Text>Enviar comentario
-      </Text>
+    <TouchableOpacity onPress={()=>this.enviarComentarios(this.state.comentario)}>
+      <Text>Enviar comentario</Text>
     </TouchableOpacity>
       </View>
       </View>
     )
   }
 }
-// const styles = Stylesheet.create({
-// input: {
-//   height: 32,
-//   borderWidth: 1
-// }
-// })
+
+const styles = StyleSheet.create({
+  input:{
+      borderWidth: 1,
+  }
+})
+
 export default  Comments
