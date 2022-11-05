@@ -32,7 +32,8 @@ function TabNavigation() {
             headerShown:false
         }} />
         <Tab.Screen name='Comments' component={Comments}
-        />
+        /> 
+        
     </Tab.Navigator>    
 )
 }
