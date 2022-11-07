@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Home from '../Home/Home'
 import {db, auth} from "../../firebase/config"
 import firebase from 'firebase'
+import Post from '../../components/Post/Post'
 
 
 class Comments extends Component {
