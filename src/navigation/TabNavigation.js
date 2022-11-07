@@ -31,8 +31,7 @@ function TabNavigation() {
             tabBarIcon: () => <FontAwesome name='home' color={'purple'} size={32} />,
             headerShown:false
         }} />
-        <Tab.Screen name='Comments' component={Comments}
-        /> 
+      
         
     </Tab.Navigator>    
 )

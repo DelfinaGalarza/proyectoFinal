@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import Login from '../screens/Login/Login'
 import Register from '../screens/Register/Register'
 import TabNavigation from './TabNavigation'
-// import Comments from '../screens/Comments/Comments'
+import Comments from '../screens/Comments/Comments'
 const Stack = createNativeStackNavigator()
 
 class MainNavigation extends Component {
@@ -42,10 +42,11 @@ class MainNavigation extends Component {
                           headerShown:false
                         }}
                         />
-                    {/* <Stack.Screen
+                    <Stack.Screen
                       name='Comments'
                       component={Comments}
-                      /> */}
+                      unmountOnBlur={true}
+                      />
               </Stack.Navigator>
           </NavigationContainer>
         )

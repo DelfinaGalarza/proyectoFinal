@@ -18,6 +18,7 @@ class Comments extends Component {
   }
 
   componentDidMount(){
+    console.log (this.props)
     db
     .collection('posts')
     .doc(this.state.id) //ya tengo claro que voy a recibir solo uno por eso despues no hago foreach
