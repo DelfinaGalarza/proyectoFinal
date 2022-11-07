@@ -4,6 +4,7 @@ import Home from '../Home/Home'
 import {db, auth} from "../../firebase/config"
 import firebase from 'firebase'
 import Post from '../../components/Post/Post'
+import CommentsInd from '../../components/CommentsInd/CommentsInd'
 
 
 class Comments extends Component {
@@ -58,7 +59,11 @@ class Comments extends Component {
         <FlatList 
         data ={this.state.aComentarios}
         keyExtractor= {item => item.createdAt.toString()}
-        renderItem ={({item}) => <Text>{item.comment}</Text>}
+        renderItem={({item}) => <CommentsInd comentario={item}  />}
+        // renderItem ={({item}) => <Text>{item.comment}</Text>}
+        
+
+
         
         />
       <View>

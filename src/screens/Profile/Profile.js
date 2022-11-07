@@ -1,6 +1,5 @@
 import { Text, View, FlatList, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
-// import Card from '../../components/Card/Card'
 import {db, auth} from '../../firebase/config'
 import Post from '../../components/Post/Post'
 import { TouchableOpacity } from 'react-native-web'
@@ -44,7 +43,8 @@ class Profile extends Component {
                 keyExtractor={(item)=> item.id.toString()}
                 renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data}  />}
             />
-            <TouchableOpacity onPress= {()=> this.logOut() }>
+            <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
+ 
                 <Text> CERRAR SESION </Text>
             </TouchableOpacity>
 
@@ -56,7 +56,14 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+
+    },
+
+    button:{
+        flex:1,
+        justifyContent: 'center',
+
     }
 })
 
