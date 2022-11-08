@@ -11,7 +11,7 @@ class Post extends Component {
         super(props)
         this.state = {
             isMyLike: false,
-            myPost:[]
+            allMyPosts: []
             // Fotouri: this.props.data.foto
         }
     }
@@ -25,6 +25,21 @@ class Post extends Component {
                 isMyLike:true,
             })
         }
+
+        db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(docs => {
+            let posteos = []
+            docs.forEach(doc => {
+                posteos.push({
+                    id: doc.id,
+                    data:doc.data(),
+                })
+            })
+            console.log(posteos)
+            this.setState({
+                allMyPosts: posteos
+            })
+        })
+
     }
 
     like(){
@@ -55,21 +70,22 @@ class Post extends Component {
         })
         .catch(err => console.log(err))
     }
-    // borrarPosteo(){
-    //     db.collection('posts')
-    //     .doc(this.props.id)
-    //     .update({
-    //         misPosteos: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
-    //     })
-    //     .then(resp => {
-    //         this.setState({
-    //             myPost: ''
-    //         })
-    //     })
-    //     .catch(err => console.log(err))
-    // }
 
-  render() {
+    borrarPosteo(){
+        db.collection('posts')
+        .doc(this.props.id)
+        .update({
+            myPosts: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+        })
+        .then(resp => {
+            this.setState({
+                allMyPosts: ''
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
+render() {
     return (
       <View style={styles.container}>
         <View style={styles.container1}>
@@ -87,7 +103,6 @@ class Post extends Component {
         
         <View>
             <Text>{this.state.likesCount}</Text>
-      
 
         
         {
@@ -109,10 +124,15 @@ class Post extends Component {
 
         </TouchableOpacity>
 
-    
-        {/* <TouchableOpacity onPress={()=> this.borrarPosteo ()}>
-            <Text>BORRAR POSTEO</Text>
-        </TouchableOpacity> */}
+            {
+                this.state.allMyPosts ?
+                <TouchableOpacity onPress={()=> this.borrarPosteo()}>
+                <Text style={styles.agregar}>BORRAR POSTEO</Text>
+                </TouchableOpacity> :
+                ''
+            }
+            
+
 
         </View>
     </View>
