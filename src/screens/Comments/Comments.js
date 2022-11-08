@@ -55,7 +55,7 @@ class Comments extends Component {
     console.log (this.props)
     return (
       <View>
-        <Text>Comments</Text>
+        <Text>Comentarios en esta publicación</Text>
         <FlatList 
         data ={this.state.aComentarios}
         keyExtractor= {item => item.createdAt.toString()}

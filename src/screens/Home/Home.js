@@ -44,15 +44,16 @@ class Home extends Component {
 </View>
         <View 
         style={styles.container}>
-           
+        
             <FlatList
+            
                 data={this.state.allPosts}
                 keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data}  />}
+                renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data}  style = {styles.post}/>}
                 
             />
-
-        </View>
+</View>
+        
         </>
 
         )
@@ -80,6 +81,12 @@ const styles = StyleSheet.create({
         height: 100,
         width: 200,
     },
+
+    post: {
+        backgroundColor: 'black',
+//no funciona lpm
+        
+    }
 })
 
 export default Home
