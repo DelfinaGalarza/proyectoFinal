@@ -1,27 +1,15 @@
-import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
-
 
 class Post extends Component {
 
     constructor(props){
         super(props)
         this.state = {
-            isMyLike: false,
-            // Fotouri: this.props.data.foto
-        }
-    }
-    componentDidMount(){
-        //['Brian', 'Nelson', 'Cami']
-        //  .('Cami')
-        let myLike = this.props.data.likes.includes(auth.currentUser.email)
-        if(myLike){
-            this.setState({
-                isMyLike:true,
-            })
+            isMyLike: false
         }
     }
 
@@ -57,23 +45,10 @@ class Post extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.container1}>
-            <Text>{this.props.data.owner}</Text>
-        </View>
-        <View style={styles.foto}>
-        <Image style={styles.image} 
-                source={{uri: this.props.data.foto}}
-                resizeMode='contain'/>
-        </View>
-        <View style={styles.container2}>
+        <View>
             <Text style={styles.subtitle}>Descripcion:</Text>
             <Text>{this.props.data.description}</Text>
         </View>
-        
-        <View>
-            <Text>{this.state.likesCount}</Text>
-      
-
         
         {
             this.state.isMyLike ?
@@ -85,15 +60,6 @@ class Post extends Component {
                     <FontAwesome name='heart-o' color='red' size={32} />
                 </TouchableOpacity>
         }
-
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
-                'Comments',
-                {id:this.props.id}
-                )}>
-            <Text>Agregar comentario</Text>
-
-        </TouchableOpacity>
-        </View>
       </View>
     )
   }
@@ -101,30 +67,17 @@ class Post extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        flexDirection: 'column',
-        padding: 10,
+        flexDirection: 'row',
+        paddingHorizontal:10,
+        paddingVertical:16,
         justifyContent:'space-between',
-        alignItems:'center',
-        margin:20,
+        marginVertical:16,
+        marginHorizontal:10,
         borderWidth:.5,
         borderRadius:10
     },
-    container1:{
-        flex:1,
-    },
-    container2:{
-        flex:3
-    },
-    foto:{
-        marginTop:100,
-        height:200,
-        width:200
-    },
     subtitle:{
         fontWeight:700,
-    },
-    image:{
-        height: 200,
     }
 })
 
