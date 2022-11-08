@@ -13,22 +13,27 @@ class CommentsInd extends Component {
 
     render () {
   return (
-    <View>
-        <Text>
+    <View style= {styles.comento}>
+        <Text style= {styles.owner}>
             {this.props.comentario.owner}
         </Text>
-        <Text>
+        <Text style= {styles.comentario}>
             {this.props.comentario.comment}
         </Text>
         
     </View>
   )
 }
+}
+const styles = StyleSheet.create({
+    comento: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+         
+    },
+    owner:{
 
-// const styles = StyleSheet.create({
-//     imagen:{
-//         height:100
-//     }
-// })
- }
+    }
+})
+ 
 export default CommentsInd

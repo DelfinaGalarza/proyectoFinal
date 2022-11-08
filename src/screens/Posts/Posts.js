@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Camara from '../../components/Camara/Camara'
 import Home from '../Home/Home'
+import { setStatusBarBackgroundColor } from 'expo-status-bar'
 
 class Posts extends Component {
   
@@ -65,11 +66,11 @@ class Posts extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
     },
     input:{
         height:32,
-        borderWidth:1
+        borderWidth:1,
     }
 })
 export default Posts

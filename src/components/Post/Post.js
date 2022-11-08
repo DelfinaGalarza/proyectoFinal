@@ -9,7 +9,20 @@ class Post extends Component {
     constructor(props){
         super(props)
         this.state = {
-            isMyLike: false
+            isMyLike: false,
+            myPost:[]
+            // Fotouri: this.props.data.foto
+        }
+    }
+    componentDidMount(){
+        
+
+        let myLike = this.props.data.likes.includes(auth.currentUser.email)
+
+        if(myLike){
+            this.setState({
+                isMyLike:true,
+            })
         }
     }
 
@@ -41,6 +54,19 @@ class Post extends Component {
         })
         .catch(err => console.log(err))
     }
+    // borrarPosteo(){
+    //     db.collection('posts')
+    //     .doc(this.props.id)
+    //     .update({
+    //         misPosteos: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+    //     })
+    //     .then(resp => {
+    //         this.setState({
+    //             myPost: ''
+    //         })
+    //     })
+    //     .catch(err => console.log(err))
+    // }
 
   render() {
     return (
@@ -60,7 +86,21 @@ class Post extends Component {
                     <FontAwesome name='heart-o' color='red' size={32} />
                 </TouchableOpacity>
         }
-      </View>
+
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'Comments',
+                {id:this.props.id}
+                )}>
+            <Text>Agregar comentario</Text>
+
+        </TouchableOpacity>
+
+    
+        {/* <TouchableOpacity onPress={()=> this.borrarPosteo ()}>
+            <Text>BORRAR POSTEO</Text>
+        </TouchableOpacity> */}
+
+        </View>
     )
   }
 }
@@ -74,7 +114,8 @@ const styles = StyleSheet.create({
         marginVertical:16,
         marginHorizontal:10,
         borderWidth:.5,
-        borderRadius:10
+        borderRadius:10,
+        backgroundColor: 'white'
     },
     subtitle:{
         fontWeight:700,
