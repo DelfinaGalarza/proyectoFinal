@@ -80,13 +80,10 @@ const styles = StyleSheet.create({
     image: {
         height: 100,
         width: 200,
-    },
-
-    post: {
-        backgroundColor: 'black',
+    }
 //no funciona lpm
         
-    }
+    
 })
 
 export default Home
