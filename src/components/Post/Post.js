@@ -73,7 +73,7 @@ class Post extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.container1}>
-            <Text>{this.props.data.owner}</Text>
+            <Text style={styles.mail}>{this.props.data.owner}</Text>
         </View>
         <View style={styles.foto}>
         <Image style={styles.image} 
@@ -82,7 +82,7 @@ class Post extends Component {
         </View>
         <View style={styles.container2}>
             <Text style={styles.subtitle}>Descripcion:</Text>
-            <Text>{this.props.data.description}</Text>
+            <Text style={styles.descripcion}>{this.props.data.description}</Text>
         </View>
         
         <View>
@@ -105,7 +105,7 @@ class Post extends Component {
                 'Comments',
                 {id:this.props.id}
                 )}>
-            <Text>Agregar comentario</Text>
+            <Text style={styles.agregar}>Agregar comentario</Text>
 
         </TouchableOpacity>
 
@@ -129,25 +129,44 @@ const styles = StyleSheet.create({
         margin:20,
         borderWidth:.5,
         borderRadius:10,
-        backgroundColor: 'white'
+        backgroundColor: 'black',
     },
+    
     container1:{
         flex:1,
     },
+
+    mail:{
+        color: 'white'
+    }, 
+
     container2:{
         flex:3
     },
+
     foto:{
         marginTop:100,
         height:200,
         width:200
     },
+
     subtitle:{
         fontWeight:700,
+        color: 'white',
     },
     image:{
         height: 200,
+    },
+
+    agregar:{
+        color: 'white',
+    },
+
+    descripcion:{
+        color: 'white',
+    },
+
     }
-})
+    )
 
 export default Post
