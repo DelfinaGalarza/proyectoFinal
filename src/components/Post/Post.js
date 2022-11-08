@@ -1,8 +1,9 @@
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
+
 
 class Post extends Component {
 
@@ -71,10 +72,23 @@ class Post extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.container1}>
+            <Text>{this.props.data.owner}</Text>
+        </View>
+        <View style={styles.foto}>
+        <Image style={styles.image} 
+                source={{uri: this.props.data.foto}}
+                resizeMode='contain'/>
+        </View>
+        <View style={styles.container2}>
             <Text style={styles.subtitle}>Descripcion:</Text>
             <Text>{this.props.data.description}</Text>
         </View>
+        
+        <View>
+            <Text>{this.state.likesCount}</Text>
+      
+
         
         {
             this.state.isMyLike ?
@@ -101,24 +115,38 @@ class Post extends Component {
         </TouchableOpacity> */}
 
         </View>
+    </View>
     )
-  }
+}
 }
 
 const styles = StyleSheet.create({
     container:{
-        flexDirection: 'row',
-        paddingHorizontal:10,
-        paddingVertical:16,
+        flexDirection: 'column',
+        padding: 10,
         justifyContent:'space-between',
-        marginVertical:16,
-        marginHorizontal:10,
+        alignItems:'center',
+        margin:20,
         borderWidth:.5,
         borderRadius:10,
         backgroundColor: 'white'
     },
+    container1:{
+        flex:1,
+    },
+    container2:{
+        flex:3
+    },
+    foto:{
+        marginTop:100,
+        height:200,
+        width:200
+    },
     subtitle:{
         fontWeight:700,
+    },
+    image:{
+        height: 200,
     }
 })
 
