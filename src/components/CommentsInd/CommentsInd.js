@@ -17,6 +17,7 @@ class CommentsInd extends Component {
         <Text style= {styles.owner}>
             {this.props.comentario.owner}
         </Text>
+
         <Text style= {styles.comentario}>
             {this.props.comentario.comment}
         </Text>
@@ -28,11 +29,15 @@ class CommentsInd extends Component {
 const styles = StyleSheet.create({
     comento: {
         flexDirection: 'row',
-        justifyContent: 'center',
+        fontSize: '15px'
+      
          
     },
     owner:{
-
+    fontWeight: 'bold'
+    },
+    comentario: {
+    
     }
 })
  
