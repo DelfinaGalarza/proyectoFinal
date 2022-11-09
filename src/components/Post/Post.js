@@ -143,10 +143,11 @@ render() {
 const styles = StyleSheet.create({
     container:{
         flexDirection: 'column',
-        padding: 10,
+        padding: 40,
         justifyContent:'space-between',
         alignItems:'center',
-        margin:20,
+        margin:50,
+        height: 500,
         borderWidth:.5,
         borderRadius:10,
         backgroundColor: 'black',
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     },
 
     foto:{
-        marginTop:100,
+        marginTop:50,
         height:200,
         width:200
     },

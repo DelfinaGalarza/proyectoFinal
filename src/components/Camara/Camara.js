@@ -63,7 +63,7 @@ class Camara extends Component {
                     ref={metodosDelComponente => this.metodosDeCamara = metodosDelComponente}
                 />
                 <TouchableOpacity onPress={()=> this.tomarFoto()}>
-                    <Text>Tomar foto</Text>
+                    <Text style={styles.sacarfoto}> Tomar foto</Text>
                 </TouchableOpacity>
             </> 
             : this.state.mostrarCamara === false && this.state.fotoUri !== '' ?
@@ -76,7 +76,7 @@ class Camara extends Component {
                     <Text>Aceptar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text>Rechazar</Text>
+                    <Text>Rechazar</Text> 
                 </TouchableOpacity>
             </> :
             <Text>No tienes permiso para usar la Camara</Text>
@@ -91,11 +91,17 @@ const styles = StyleSheet.create({
         flex:1
     },
     camara:{
-        height:200
+        height:10,
+        width: '20',
+        borderBottomColor: 'black',
     },
     image:{
-        height:200
-    }
+        height:100
+    },
+
+    sacarfoto:{
+        fontsize: '2000px'
+    },
 })
 
 export default Camara

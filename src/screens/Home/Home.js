@@ -36,7 +36,7 @@ class Home extends Component {
        
        <View style={styles.header}> 
         <Image style={styles.image}
-        source={require('../../../assets/iconoWeParty.jpeg')}
+        source={require('../../../assets/iconoWP.png')}
         resizeMode= 'contain'/>
         <Text style={styles.text}> We Party</Text>
 
@@ -67,22 +67,22 @@ const styles = StyleSheet.create({
     },
     header:{
         backgroundColor: 'black', 
-        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        height: '110',
+        padding: 14,
     },
 
     text:{
         color: "rgb(148, 5, 245)",
         textAlign: 'center', 
+        fontSize: '30px',
     },
 
     image: {
-        height: 100,
+        height: 60,
         width: 200,
-    }
-//no funciona lpm
-        
+    }        
     
 })
 
