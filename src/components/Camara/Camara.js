@@ -88,19 +88,23 @@ class Camara extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1, 
+       
     },
     camara:{
         height:10,
         width: '20',
         borderBottomColor: 'black',
+        backgroundColor: 'black',
     },
     image:{
         height:100
     },
 
     sacarfoto:{
-        fontsize: '2000px'
+        fontsize: '2000px',
+        color: 'white',
+        backgroundColor: 'black',
     },
 })
 
