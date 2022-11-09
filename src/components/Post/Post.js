@@ -11,18 +11,31 @@ class Post extends Component {
         super(props)
         this.state = {
             isMyLike: false,
-            // isMyPost: false
+            myPosts: []
         }
     }
     componentDidMount(){
-        
-        // let myPost = this.props.data.includes(auth.currentUser.email)
-
-        // if(myPost){
-        //     this.setState({
-        //         isMyPost:true,
-        //     })
-        // }
+        //junto mis posteos y los meto dentro de un array para luego editarlos
+        db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
+            let misPosteos = []
+            docs.forEach(doc => {
+                misPosteos.push({
+                    id: doc.id,
+                    data:doc.data()
+                })
+            })
+            this.setState({
+                myPosts: misPosteos
+            })
+        })
+    
+        let myPost = this.props.data
+        console.log(myPost)
+        if(myPost){
+            this.setState({
+                isMyPost:true,
+            })
+        }
 
         let myLike = this.props.data.likes.includes(auth.currentUser.email)
 
@@ -63,19 +76,19 @@ class Post extends Component {
         .catch(err => console.log(err))
     }
 
-    // borrarPosteo(){
-    //     db.collection('posts')
-    //     .doc(this.props.id)
-    //     .update({
-    //         posts: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
-    //     })
-    //     .then(resp => {
-    //         this.setState({
-    //             isMyPost: false
-    //         })
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+    borrarPosteo(){
+        db.collection('posts')
+        .doc(this.props.id)
+        .update({
+            posts: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+        })
+        .then(resp => {
+            this.setState({
+                isMyPost: false
+            })
+        })
+        .catch(err => console.log(err))
+    }
 
 render() {
     return (
@@ -115,12 +128,14 @@ render() {
             <Text style={styles.agregar}>Agregar comentario</Text>
 
         </TouchableOpacity>
-
-{/* 
-                <TouchableOpacity onPress={()=> this.borrarPosteo(this.state.data)}>
+            {
+                this.state.myPosts ?
+                <TouchableOpacity onPress={()=> this.borrarPosteo()}>
                 <Text style={styles.agregar}>BORRAR POSTEO</Text>
-                </TouchableOpacity> 
-             */}
+                </TouchableOpacity> : ''
+            }
+            
+            
 
 
         </View>

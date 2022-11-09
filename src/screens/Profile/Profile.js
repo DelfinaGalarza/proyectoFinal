@@ -49,7 +49,8 @@ class Profile extends Component {
             <FlatList
                 data={this.state.myPosts}
                 keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data} myPost={item} />}
+                renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data}/>}
+                
             />
             <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
  
