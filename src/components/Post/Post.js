@@ -11,12 +11,18 @@ class Post extends Component {
         super(props)
         this.state = {
             isMyLike: false,
-            allMyPosts: []
-            // Fotouri: this.props.data.foto
+            // isMyPost: false
         }
     }
     componentDidMount(){
         
+        // let myPost = this.props.data.includes(auth.currentUser.email)
+
+        // if(myPost){
+        //     this.setState({
+        //         isMyPost:true,
+        //     })
+        // }
 
         let myLike = this.props.data.likes.includes(auth.currentUser.email)
 
@@ -25,20 +31,6 @@ class Post extends Component {
                 isMyLike:true,
             })
         }
-
-        db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(docs => {
-            let posteos = []
-            docs.forEach(doc => {
-                posteos.push({
-                    id: doc.id,
-                    data:doc.data(),
-                })
-            })
-            console.log(posteos)
-            this.setState({
-                allMyPosts: posteos
-            })
-        })
 
     }
 
@@ -71,19 +63,19 @@ class Post extends Component {
         .catch(err => console.log(err))
     }
 
-    borrarPosteo(){
-        db.collection('posts')
-        .doc(this.props.id)
-        .update({
-            myPosts: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
-        })
-        .then(resp => {
-            this.setState({
-                allMyPosts: ''
-            })
-        })
-        .catch(err => console.log(err))
-    }
+    // borrarPosteo(){
+    //     db.collection('posts')
+    //     .doc(this.props.id)
+    //     .update({
+    //         posts: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+    //     })
+    //     .then(resp => {
+    //         this.setState({
+    //             isMyPost: false
+    //         })
+    //     })
+    //     .catch(err => console.log(err))
+    // }
 
 render() {
     return (
@@ -124,14 +116,11 @@ render() {
 
         </TouchableOpacity>
 
-            {
-                this.state.allMyPosts ?
-                <TouchableOpacity onPress={()=> this.borrarPosteo()}>
+{/* 
+                <TouchableOpacity onPress={()=> this.borrarPosteo(this.state.data)}>
                 <Text style={styles.agregar}>BORRAR POSTEO</Text>
-                </TouchableOpacity> :
-                ''
-            }
-            
+                </TouchableOpacity> 
+             */}
 
 
         </View>
