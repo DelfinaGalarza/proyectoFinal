@@ -96,17 +96,19 @@ render() {
     return (
         <View style={styles.container}>
         <View style={styles.container1}>
-            <Text style={styles.mail}>{this.props.data.owner}</Text>
+            <Text >{this.props.data.owner}</Text>
         </View>
-        <View style={styles.foto}>
+        
+          <View >
         <Image style={styles.image} 
                 source={{uri: this.props.data.foto}}
                 resizeMode='contain'/>
-        </View>
-        <View style={styles.container2}>
+          </View>
+          <View style={styles.container2}>
             <Text style={styles.subtitle}>Descripcion:</Text>
             <Text style={styles.descripcion}>{this.props.data.description}</Text>
-        </View>
+          </View>
+       
         
         <View>
             <Text>{this.state.likesCount}</Text>
@@ -152,30 +154,28 @@ const styles = StyleSheet.create({
         padding: 40,
         justifyContent:'space-between',
         alignItems:'center',
-        margin:50,
-        height: 500,
-        borderWidth:.5,
-        borderRadius:10,
+      marginBottom: 10,
+     marginTop: 5,
         backgroundColor: 'black',
+        flex: 1,
+    
     },
     
     container1:{
-        flex:1,
+      justifyContent: 'left',
+        backgroundColor: 'white',
+        color: 'black',
     },
-
-    mail:{
-        color: 'white'
-    }, 
 
     container2:{
         flex:3
     },
 
-    foto:{
-        marginTop:50,
-        height:200,
-        width:200
-    },
+    // foto:{
+    //     marginTop:50,
+    //     height:200,
+    //     width:200
+    // },
 
     subtitle:{
         fontWeight:700,
@@ -183,6 +183,9 @@ const styles = StyleSheet.create({
     },
     image:{
         height: 200,
+        
+        width: '100%',
+        
     },
 
     agregar:{
@@ -192,7 +195,7 @@ const styles = StyleSheet.create({
     descripcion:{
         color: 'white',
     },
-
+    
     }
     )
 

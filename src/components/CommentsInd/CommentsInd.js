@@ -29,7 +29,7 @@ class CommentsInd extends Component {
 const styles = StyleSheet.create({
     comento: {
         flexDirection: 'row',
-        fontSize: '15px'
+      
       
          
     },
