@@ -110,7 +110,7 @@ render() {
           </View>
        
         
-        <View>
+        <View style={styles.like}>
             <Text>{this.state.likesCount}</Text>
 
         
@@ -154,21 +154,29 @@ const styles = StyleSheet.create({
         padding: 40,
         justifyContent:'space-between',
         alignItems:'center',
-      marginBottom: 10,
-     marginTop: 5,
-        backgroundColor: 'black',
+        margin: 50,
+        marginBottom: 10,
+        backgroundColor: 'white',
+        marginTop: 20,
         flex: 1,
+        borderWidth: 3,
+        borderRadius: 10,
+
     
     },
     
     container1:{
-      justifyContent: 'left',
+        justifyContent: 'left',
         backgroundColor: 'white',
         color: 'black',
+        marginBottom: 30,
+        width: '100%',
     },
 
     container2:{
-        flex:3
+        flex:3,
+        margintop: 50,
+        
     },
 
     // foto:{
@@ -179,23 +187,29 @@ const styles = StyleSheet.create({
 
     subtitle:{
         fontWeight:700,
-        color: 'white',
+        color: 'black',
+
     },
     image:{
-        height: 200,
-        
-        width: 300,
+        height: 265,
+        width: 100000,
+        border: 'black',
+
         
     },
 
     agregar:{
-        color: 'white',
+        color: 'black',
     },
 
     descripcion:{
-        color: 'white',
+        color: 'black',
     },
     
+    like: {
+        justifyContent: 'left',
+
+    },
     }
     )
 
