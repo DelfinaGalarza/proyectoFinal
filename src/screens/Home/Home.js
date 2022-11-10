@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         color: "rgb(148, 5, 245)",
         textAlign: 'center', 
         fontSize: '30px',
+        fontStyle: 'Fugaz One',
     },
 
     image: {
