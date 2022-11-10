@@ -11,31 +11,39 @@ class Post extends Component {
         super(props)
         this.state = {
             isMyLike: false,
-            myPosts: []
+            myPosts: [],
+            isMyPost:false
         }
     }
     componentDidMount(){
         //junto mis posteos y los meto dentro de un array para luego editarlos
-        db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
-            let misPosteos = []
-            docs.forEach(doc => {
-                misPosteos.push({
-                    id: doc.id,
-                    data:doc.data()
-                })
-            })
-            this.setState({
-                myPosts: misPosteos
-            })
-        })
+        // db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
+        //     let misPosteos = []
+        //     docs.forEach(doc => {
+        //         misPosteos.push({
+        //             id: doc.id,
+        //             data:doc.data()
+        //         })
+        //     })
+        //     this.setState({
+        //         myPosts: misPosteos
+        //     })
+        // })
     
-        let myPost = this.props.data
-        console.log(myPost)
-        if(myPost){
-            this.setState({
-                isMyPost:true,
-            })
-        }
+        // let myPost = this.props.data
+        // console.log(myPost)
+        // if(myPost){
+        //     this.setState({
+        //         isMyPost:true,
+        //     })
+        // }
+
+       if(this.props.data.owner === auth.currentUser.email){
+        this.setState({
+            isMyPost: true,
+        })
+       }
+
 
         let myLike = this.props.data.likes.includes(auth.currentUser.email)
 
@@ -79,20 +87,14 @@ class Post extends Component {
     borrarPosteo(){
         db.collection('posts')
         .doc(this.props.id)
-        .update({
-            posts: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
-        })
-        .then(resp => {
-            this.setState({
-                isMyPost: false
-            })
-        })
-        .catch(err => console.log(err))
+        .delete()
+        .then(()=> {this.props.navigation.navigate('Profile')})
+        .catch(err=> console.log(err))
     }
 
 render() {
     return (
-      <View style={styles.container}>
+        <View style={styles.container}>
         <View style={styles.container1}>
             <Text style={styles.mail}>{this.props.data.owner}</Text>
         </View>
@@ -128,13 +130,13 @@ render() {
             <Text style={styles.agregar}>Agregar comentario</Text>
 
         </TouchableOpacity>
+            
             {
-                this.state.myPosts ?
+                this.state.isMyPost ?
                 <TouchableOpacity onPress={()=> this.borrarPosteo()}>
                 <Text style={styles.agregar}>BORRAR POSTEO</Text>
                 </TouchableOpacity> : ''
             }
-            
             
 
 
