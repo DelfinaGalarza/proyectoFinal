@@ -32,6 +32,12 @@ class Register extends Component {
                 />
                 <TextInput
                     style={styles.input}
+                    placeholder='Escribi tu nombre de usuario'
+                    onChangeText={text => this.setState({username: text})}
+                    value={this.state.username}
+                />
+                <TextInput
+                    style={styles.input}
                     placeholder='Escribi tu password'
                     onChangeText={text => this.setState({password: text})}
                     value={this.state.password}
