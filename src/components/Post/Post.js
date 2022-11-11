@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
         color: 'black',
         marginBottom: 30,
         width: '100%',
+        
     },
     likeycoment:{
         justifyContent: 'space-around',
@@ -193,7 +194,9 @@ const styles = StyleSheet.create({
 
     container2:{
         flex:3,
-        margintop: 50,
+        margintop: 60,
+        marginBottom: 10,
+
         
     },
 
@@ -212,6 +215,7 @@ const styles = StyleSheet.create({
         height: 265,
         width: 100000,
         border: 'black',
+        marginBottom: 30,
 
         
     },
@@ -226,7 +230,8 @@ const styles = StyleSheet.create({
     
     like: {
         justifyContent: 'left',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: 20,
     },
 
     coment: {

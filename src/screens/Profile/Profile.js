@@ -59,7 +59,7 @@ class Profile extends Component {
 
      <View style={styles.perfil}>
 
-        <View>
+        <View style={styles.own}>
         <Text >{auth.currentUser.email}</Text>
         </View>
 
@@ -102,10 +102,14 @@ const styles = StyleSheet.create({
     },
     perfil:{
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        margin: 10,
+    },
+    own:{
+        marginTop: 10,
     },
     pub:{
-        alignItems: 'center'
+        alignItems: 'center',
     },
     lik:{
         alignItems: 'center'
