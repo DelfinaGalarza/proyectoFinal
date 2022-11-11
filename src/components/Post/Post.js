@@ -12,6 +12,7 @@ class Post extends Component {
         this.state = {
             isMyLike: false,
             cantLikes: props.data.likes.length, 
+            cantComments: props.data.comments.length,
             myPosts: [],
             isMyPost:false
         }
@@ -44,7 +45,8 @@ class Post extends Component {
         .then(resp => {
             this.setState({
                 isMyLike:true,
-                cantLikes: this.state.cantLikes + 1 //agrego un numero mas al estado original
+                cantLikes: this.state.cantLikes + 1, //agrego un numero mas al estado original
+                cantComments: this.state.cantComments + 1,
             })
         })
         .catch(err=> console.log(err))
@@ -59,7 +61,8 @@ class Post extends Component {
         .then(resp => {
             this.setState({
                 isMyLike:false,
-                cantLikes: this.state.cantLikes - 1 //le resto un like al estado original
+                cantLikes: this.state.cantLikes - 1, //le resto un like al estado original
+                cantComments: this.state.cantComments - 1,
             })
         })
         .catch(err => console.log(err))
@@ -79,18 +82,15 @@ render() {
         <View style={styles.container1}>
             <Text >{this.props.data.owner}</Text>
         </View>
-        
-          <View >
+
+        <View >
         <Image style={styles.image} 
                 source={{uri: this.props.data.foto}}
                 resizeMode='contain'/>
           </View>
-          <View style={styles.container2}>
-            <Text style={styles.subtitle}>Descripcion:</Text>
-            <Text style={styles.descripcion}>{this.props.data.description}</Text>
-          </View>
-       
         
+        <View style={styles.likeycoment}>
+
         <View style={styles.like}>
             <Text>{this.state.cantLikes}</Text>
 
@@ -105,6 +105,15 @@ render() {
                     <FontAwesome name='heart-o' color='red' size={32} />
                 </TouchableOpacity>
         }
+
+        <View style={styles.comment} >
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'Comments',
+                {id:this.props.id}
+                )}>
+            <FontAwesome name='comment' size={32} />
+
+        </TouchableOpacity>
         {/* <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'Likes',
                 {id:this.props.id}
@@ -113,15 +122,28 @@ render() {
 
         </TouchableOpacity> */}
         </View>
+    
+        </View>
 
+
+        </View>
+        
+
+          <View style={styles.container2}>
+            <Text style={styles.subtitle}>Descripcion: {this.props.data.description}</Text>
+            </View>
+       
+        
+        
         <View style={styles.coment}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'Comments',
                 {id:this.props.id}
                 )}>
-            <Text style={styles.agregar}>Agregar comentario</Text>
+            <Text>ver los {this.state.cantComments} comentarios</Text>
 
         </TouchableOpacity>
+        
         </View>
 
         <View>
@@ -163,6 +185,10 @@ const styles = StyleSheet.create({
         color: 'black',
         marginBottom: 30,
         width: '100%',
+    },
+    likeycoment:{
+        justifyContent: 'space-around',
+        flexDirection: 'row'
     },
 
     container2:{
