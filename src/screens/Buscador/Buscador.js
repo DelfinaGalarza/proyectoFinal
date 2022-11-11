@@ -1,98 +1,92 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image} from 'react-native'
-import React, { Component } from 'react'
-import {auth} from '../../firebase/config'
+// lo copie de google, tengo que cambiarlo pero me gusta el boton asi que todavia no lo borro
 
 
 
-class Buscador extends Component {
+import React from "react";
+import { StyleSheet, TextInput, View, Keyboard, Button } from "react-native";
+import { Feather, Entypo } from "@expo/vector-icons";
 
-    constructor(props){
-        super(props)
-        this.state={
-            owner:'',
-            users: [],
-            logueado: false
+const Buscador = ({clicked, searchPhrase, setSearchPhrase, setCLicked}) => {
+  return (
+    <View style={styles.container}>
+      <View
+        style={
+          clicked
+            ? styles.searchBar__clicked
+            : styles.searchBar__unclicked
         }
-    }
-
-    //aca tengo que poner el array con todos los usuarios posibles
-    componentDidMount(){
-        auth.onAuthStateChanged(user => {
-            if(user !== null){
-                this.props.navigation.navigate('TabNavigation')
-            }
-        })
-    }
-
-    buscar(text){
-
-        //Filtramos dependiendo de que recibe por parametro 
-
-        letusersFilter = this.state.users.filter(elm => elm.owner.toUpperCase().includes(text.toUpperCase()))
-
-        this.setState({
-            owner: text,
-            users: usersFilter, 
-        })
-    }
-
-    render() {
-        return (
-        <>
-
-     <View style={styles.headerbusc}> 
-            <Image style={styles.imagebusc}
-             source={require('../../../assets/iconoWP.png')}
-             resizeMode= 'contain'/>
-             <Text style={styles.textbusc}> Search Party</Text>
-     </View>
-
-    
-          <View style={styles.container}>
-            <Text style= {styles.text}> Ingrese su busquedad</Text>
-            <View>
-                <TextInput
-                 style={ styles.owner}
-                 onChangeText={ text => this.buscar( {text} )}
-                 placeholder='Ingresa tu email'
-                 value={this.state.owner}
-                />
-                 </View>
+      >
+        {/* search Icon */}
+        <Feather
+          name="search"
+          size={20}
+          color="black"
+          style={{ marginLeft: 1 }}
+        />
+        {/* Input field */}
+        <TextInput
+          style={styles.input}
+          placeholder="Search"
+          value={searchPhrase}
+          onChangeText={setSearchPhrase}
+          onFocus={() => {
+            setClicked(true);
+          }}
+        />
+        {/* cross Icon, depending on whether the search bar is clicked or not */}
+        {clicked && (
+          <Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {
+              setSearchPhrase("")
+          }}/>
+        )}
       </View>
-    </>
-    )
-  }
-}
+      {/* cancel button, depending on whether the search bar is clicked or not */}
+      {clicked && (
+        <View>
+          <Button
+            title="Cancel"
+            onPress={() => {
+              Keyboard.dismiss();
+              setClicked(false);
+            }}
+          ></Button>
+        </View>
+      )}
+    </View>
+  );
+};
+export default Buscador;
 
-
+// styles
 const styles = StyleSheet.create({
-    
-    container:{
-        flex:1,
-        justifyContent:'center',
-        paddingHorizontal:32,
-        width: '100%',
-        backgroundColor: "rgb(148, 5, 245)",
-    },
+  container: {
+    margin: 15,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    flexDirection: "row",
+    width: "90%",
 
-    headerbusc:{
-        backgroundColor: 'black', 
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '110',
-        padding: 14,
-    },
-
-    textbusc:{
-        color: "rgb(148, 5, 245)",
-        textAlign: 'center', 
-        fontSize: '30px',
-    },
-
-    imagebusc: {
-        height: 60,
-        width: 200,
-    }
-})
-
-export default Buscador
+  },
+  searchBar__unclicked: {
+    padding: 10,
+    flexDirection: "row",
+    width: "95%",
+    backgroundColor: "#d9dbda",
+    borderRadius: 15,
+    alignItems: "center",
+  },
+  searchBar__clicked: {
+    padding: 10,
+    flexDirection: "row",
+    width: "80%",
+    backgroundColor: "#d9dbda",
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  input: {
+    fontSize: 20,
+    marginLeft: 10,
+    width: "90%",
+  },
+});

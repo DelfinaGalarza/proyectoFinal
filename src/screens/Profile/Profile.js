@@ -55,6 +55,10 @@ class Profile extends Component {
              source={require('../../../assets/iconoWP.png')}
              resizeMode= 'contain'/>
              <Text style={styles.texthome}> You Party</Text>
+             
+             <View style={styles.bottonarriba}>
+                 <a href="index.html">Inicio</a>
+            </View>
      </View>
 
      <View style={styles.perfil}>

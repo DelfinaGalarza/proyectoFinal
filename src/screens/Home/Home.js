@@ -42,6 +42,9 @@ class Home extends Component {
         resizeMode= 'contain'/>
         <Text style={styles.text}> We Party</Text>
 
+        <View style={styles.bottonarriba}>
+                 <a href="index.html">Inicio</a>
+            </View>
 
 </View>
         <View 
@@ -70,7 +73,6 @@ const styles = StyleSheet.create({
     header:{
         backgroundColor: 'black', 
         alignItems: 'center',
-        justifyContent: 'center',
         height: '110',
         padding: 14,
     },
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
     image: {
         height: 60,
         width: 100,
-    }        
+    },      
     
 })
 

@@ -133,14 +133,15 @@ render() {
             <Text style={styles.subtitle}>Descripcion: {this.props.data.description}</Text>
             </View>
        
-        
+
+           
         
         <View style={styles.coment}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'Comments',
                 {id:this.props.id}
                 )}>
-            <Text>ver los {this.state.cantComments} comentarios</Text>
+            <Text style={styles.comentario}>ver los {this.state.cantComments} comentarios</Text>
 
         </TouchableOpacity>
         
@@ -235,8 +236,15 @@ const styles = StyleSheet.create({
     },
 
     coment: {
-        color: 'black',
-    }
+        color: "rgb(148, 5, 245)",
+        textDecorationLine: 'underline',
+    },
+
+    comentario: {
+        color: "rgb(148, 5, 245)",
+    },
+
+   
 
     }
     )
