@@ -11,33 +11,12 @@ class Post extends Component {
         super(props)
         this.state = {
             isMyLike: false,
+            cantLikes: props.data.likes.length, 
             myPosts: [],
             isMyPost:false
         }
     }
     componentDidMount(){
-        //junto mis posteos y los meto dentro de un array para luego editarlos
-        // db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
-        //     let misPosteos = []
-        //     docs.forEach(doc => {
-        //         misPosteos.push({
-        //             id: doc.id,
-        //             data:doc.data()
-        //         })
-        //     })
-        //     this.setState({
-        //         myPosts: misPosteos
-        //     })
-        // })
-    
-        // let myPost = this.props.data
-        // console.log(myPost)
-        // if(myPost){
-        //     this.setState({
-        //         isMyPost:true,
-        //     })
-        // }
-
        if(this.props.data.owner === auth.currentUser.email){
         this.setState({
             isMyPost: true,
@@ -64,7 +43,8 @@ class Post extends Component {
         })
         .then(resp => {
             this.setState({
-                isMyLike:true
+                isMyLike:true,
+                cantLikes: this.state.cantLikes + 1 //agrego un numero mas al estado original
             })
         })
         .catch(err=> console.log(err))
@@ -78,7 +58,8 @@ class Post extends Component {
         })
         .then(resp => {
             this.setState({
-                isMyLike:false
+                isMyLike:false,
+                cantLikes: this.state.cantLikes - 1 //le resto un like al estado original
             })
         })
         .catch(err => console.log(err))
@@ -111,7 +92,7 @@ render() {
        
         
         <View style={styles.like}>
-            <Text>{this.state.likesCount}</Text>
+            <Text>{this.state.cantLikes}</Text>
 
         
         {
@@ -124,7 +105,16 @@ render() {
                     <FontAwesome name='heart-o' color='red' size={32} />
                 </TouchableOpacity>
         }
+        {/* <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'Likes',
+                {id:this.props.id}
+                )}>
+            <Text style={styles.agregar}>Los likes</Text>
 
+        </TouchableOpacity> */}
+        </View>
+
+        <View style={styles.coment}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'Comments',
                 {id:this.props.id}
@@ -132,17 +122,19 @@ render() {
             <Text style={styles.agregar}>Agregar comentario</Text>
 
         </TouchableOpacity>
-            
+        </View>
+
+        <View>
             {
                 this.state.isMyPost ?
                 <TouchableOpacity onPress={()=> this.borrarPosteo()}>
                 <Text style={styles.agregar}>BORRAR POSTEO</Text>
                 </TouchableOpacity> : ''
             }
-            
+            </View>
 
 
-        </View>
+        
     </View>
     )
 }
@@ -208,8 +200,13 @@ const styles = StyleSheet.create({
     
     like: {
         justifyContent: 'left',
-
+        flexDirection: 'row'
     },
+
+    coment: {
+        color: 'black',
+    }
+
     }
     )
 

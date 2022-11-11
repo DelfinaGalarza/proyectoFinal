@@ -7,6 +7,8 @@ import Home from '../screens/Home/Home'
 import Register from '../screens/Register/Register'
 import TabNavigation from './TabNavigation'
 import Comments from '../screens/Comments/Comments'
+import Likes from '../screens/Likes/Likes'
+
 const Stack = createNativeStackNavigator()
 
 class MainNavigation extends Component {
@@ -55,6 +57,13 @@ class MainNavigation extends Component {
                       component={Comments}
                       unmountOnBlur={true}
                       />
+
+                    {/* <Stack.Screen
+                      name='Likes'
+                      component={Likes}
+                      unmountOnBlur={true}
+                      /> */}
+
               </Stack.Navigator>
           </NavigationContainer>
         )
