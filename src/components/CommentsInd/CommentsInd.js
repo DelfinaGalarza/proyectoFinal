@@ -29,12 +29,15 @@ class CommentsInd extends Component {
 const styles = StyleSheet.create({
     comento: {
         flexDirection: 'row',
+        marginTop: 10,
       
       
          
     },
     owner:{
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginRight: 5,
+    
     },
     comentario: {
     

@@ -86,6 +86,12 @@ class Comments extends Component {
 const styles = StyleSheet.create({
   input:{
       borderWidth: 1,
+      marginTop: 10,
+      backgroundColor: 'black',
+      color: 'white',
+  },
+  titulo:{
+    marginBottom: 30,
   }
 })
 
