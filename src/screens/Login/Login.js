@@ -108,11 +108,12 @@ const styles = StyleSheet.create({
     },
     registrarse:{
         flex: 'row', 
-        height: 10,  
+        height: 15,  
       },
       reg: {
           color: 'white',
-      }
+        
+          }
      
 })
 

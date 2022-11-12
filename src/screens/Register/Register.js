@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
 import { auth } from '../../firebase/config'
 import CamaraRegistro from '../../components/CamaraRegistro/CamaraRegistro'
@@ -46,18 +46,22 @@ class Register extends Component {
 
     render() {
         return (
+            <>
+            <View> <Image style={styles.image}
+        source={require('../../../assets/iconosinfondo.PNG')}
+        resizeMode= 'contain' /> </View> 
         <View style={styles.container}>
             <View>
-                <Text>Register</Text>
+                <View style={styles.titulo}><Text>Registrate</Text></View>
                 <TextInput
-                    style={styles.input}
+                    style={styles.email}
                     placeholder='Escribi tu email'
                     onChangeText={text => this.setState({email: text})}
                     value={this.state.email}
                 
                 />
                 <TextInput
-                    style={styles.input}
+                    style={styles.password}
                     placeholder='Escribi tu password'
                     onChangeText={text => this.setState({password: text})}
                     value={this.state.password}
@@ -69,7 +73,7 @@ class Register extends Component {
                 onChangeText={text => this.setState({name: text})}
                 value={this.state.name}
                 keyboardType='default'
-                style={styles.input}
+                style={styles.usuario}
                 />
             </View>
             
@@ -118,7 +122,8 @@ class Register extends Component {
                     ''
                 }
             </View>
-        )
+       </> )
+        
     }
 }
 
@@ -130,6 +135,19 @@ const styles = StyleSheet.create({
     },
     input:{
         borderWidth:1
+    },
+    image: {
+        marginTop: 25,
+        height: 150,
+        width: '100%',
+       justifyContent: 'center',
+    }   ,
+    email:{
+         marginTop:5,
+         marginBottom: 5,
+    },
+    titulo: {
+        
     }
 })
 
