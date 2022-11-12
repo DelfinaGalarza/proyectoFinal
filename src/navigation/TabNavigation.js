@@ -4,7 +4,7 @@ import {FontAwesome} from '@expo/vector-icons'
 import Profile from '../screens/Profile/Profile'
 import Posts from '../screens/Posts/Posts'
 import Home from '../screens/Home/Home'
-import Buscador from '../screens/Buscador/Buscador'
+import Buscador2 from '../screens/Buscador/Buscador2'
 
 import Comments from '../screens/Comments/Comments'
 
@@ -33,7 +33,7 @@ function TabNavigation() {
             tabBarIcon: () => <FontAwesome name='camera' color={"rgb(148, 5, 245)"} size={32} />,
             headerShown:false
         }} />
-        <Tab.Screen name='Search' component={Buscador} //mas adelante cuando ande lo cambiio a buscador
+        <Tab.Screen name='Search' component={Buscador2} //mas adelante cuando ande lo cambiio a buscador
         options={{
             tabBarIcon: () => <FontAwesome name='search' color={"rgb(148, 5, 245)"} size={32} />,
             headerShown:false
