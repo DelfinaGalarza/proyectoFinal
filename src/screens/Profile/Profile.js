@@ -2,6 +2,7 @@ import { Text, View, FlatList, StyleSheet, Image} from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Post from '../../components/Post/Post'
+import Perfil from '../../components/Perfil/Perfil'
 import { TouchableOpacity } from 'react-native-web'
 
 class Profile extends Component {
@@ -60,22 +61,9 @@ class Profile extends Component {
                  <a href="index.html">Inicio</a>
             </View>
      </View>
+            <Perfil mail={auth.currentUser.email} nPosts={this.state.myPosts.length} />
 
      <View style={styles.perfil}>
-
-        <View style={styles.own}>
-        <Text >{auth.currentUser.email}</Text>
-        </View>
-
-        <View style={styles.pub}>
-        <Text>{this.state.myPosts.length}</Text>
-        <Text style={styles.subtitle}> Publicaciones </Text>
-        </View>
-
-        <View style={styles.lik}>
-        <Text>{this.state.myLikes.length}</Text>
-        <Text style={styles.subtitle}> Likes </Text>
-        </View>
 
      </View>
 
@@ -104,20 +92,7 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor: "rgb(148, 5, 245)",
     },
-    perfil:{
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        margin: 10,
-    },
-    own:{
-        marginTop: 10,
-    },
-    pub:{
-        alignItems: 'center',
-    },
-    lik:{
-        alignItems: 'center'
-    },
+    
     subtitle:{
         fontWeight:700,
         color: 'black',

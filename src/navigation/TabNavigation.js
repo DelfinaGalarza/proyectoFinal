@@ -25,17 +25,17 @@ function TabNavigation() {
         />
         <Tab.Screen name='Profile' component={Profile}
         options={{
-            tabBarIcon: () => <FontAwesome name='home' color={"rgb(148, 5, 245)"} size={32} />,
+            tabBarIcon: () => <FontAwesome name='user' color={"rgb(148, 5, 245)"} size={32} />,
             headerShown:false
         }} />
         <Tab.Screen name='Posts' component={Posts}
         options={{
-            tabBarIcon: () => <FontAwesome name='home' color={"rgb(148, 5, 245)"} size={32} />,
+            tabBarIcon: () => <FontAwesome name='camera' color={"rgb(148, 5, 245)"} size={32} />,
             headerShown:false
         }} />
         <Tab.Screen name='Search' component={Buscador} //mas adelante cuando ande lo cambiio a buscador
         options={{
-            tabBarIcon: () => <FontAwesome name='home' color={"rgb(148, 5, 245)"} size={32} />,
+            tabBarIcon: () => <FontAwesome name='search' color={"rgb(148, 5, 245)"} size={32} />,
             headerShown:false
         }} />
       
