@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 import { auth } from '../../firebase/config'
-import Camara from '../../components/Camara/Camara'
+import CamaraRegistro from '../../components/CamaraRegistro/CamaraRegistro'
 
 class Register extends Component {
 
@@ -14,6 +14,7 @@ class Register extends Component {
             name:'',
             mostrarCamara: true,
             fotoUrl:'',
+            bio:''
         }
     }
 
@@ -74,11 +75,18 @@ class Register extends Component {
             <View style={styles.container}>
             {
                 this.state.mostrarCamara ?
-                <Camara
+                <CamaraRegistro
 
                 cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
                 /> : 
                 <>
+                    <TextInput
+                    placeholder='Deja tu biografia'
+                    onChangeText={text => this.setState({bio: text})}
+                    value={this.state.bio}
+                    keyboardType='default'
+                    style={styles.input}
+                    />
                 <TouchableOpacity onPress={()=> this.fotoPerfil(this.state.name)}>
                     <Text> Cargar foto de perfil</Text>
                 </TouchableOpacity>
