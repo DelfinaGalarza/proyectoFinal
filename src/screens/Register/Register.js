@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { auth } from '../../firebase/config'
 import CamaraRegistro from '../../components/CamaraRegistro/CamaraRegistro'
 
+
 class Register extends Component {
 
     constructor(){

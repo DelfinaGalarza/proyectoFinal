@@ -1,39 +1,37 @@
 import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image,  FlatList} from 'react-native'
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 import {auth} from '../../firebase/config'
 import {SearchBar } from 'react-native'
 
 
 
-class Buscador2 extends Component {
+class Buscador extends Component {
 
     constructor(props){
         super(props)
         this.state={
             loading: false,
-            owners:[],
+            users:[],
             searchValue: '',
         }
     }
 
     //aca tengo que poner el array con todos los usuarios posibles
     componentDidMount(){
-        auth.onAuthStateChanged(user => {
-            if(user !== null){
-                this.props.navigation.navigate('TabNavigation')
-            }
-        })
+
+
+       
     }
 
     buscar(text){
 
         //Filtramos dependiendo de que recibe por parametro 
 
-        letusersFilter = this.state.users.filter(elm => 
-            elm.owner.toUpperCase().includes(text.toUpperCase()))
+        let usersFilter = this.state.users.filter(elm => 
+            elm.user.toUpperCase().includes(text.toUpperCase()))
 
         this.setState({
-            owner: text,
+            user: text,
             users: usersFilter, 
         })
     }
@@ -50,28 +48,22 @@ class Buscador2 extends Component {
      </View>
 
     
-          <View style={styles.container}>   
-
-          <View style={styles.barra}>
+   {/* <View style={styles.container}>   
+        <View style={styles.barra}>
           <SearchBar
           placeholder="Search Here..."
-          lightTheme
-          round
           value={this.state.owner}
           onChangeText={(text) => this.buscar(text)}
           autoCorrect={false}
         />
-    
-        </View>     
-        <FlatList
+     </View> 
+         
+        {/* <FlatList
           data={this.state.data}
-          renderItem={renderItem}
           keyExtractor={(item) => item.id}
-        />
-
-                   
-    
-      </View>
+        /> 
+      </View> */}
+      
     </>
     )
   }
@@ -108,7 +100,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Buscador2
+export default Buscador
 
 
 

@@ -57,13 +57,15 @@ class Profile extends Component {
              resizeMode= 'contain'/>
              <Text style={styles.texthome}> You Party</Text>
              
-             <View style={styles.bottonarriba}>
-                 <a href="index.html">Inicio</a>
-            </View>
+             <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
+                <Text style={styles.cerrar}> CERRAR SESION </Text>
+            </TouchableOpacity>
      </View>
-            <Perfil mail={auth.currentUser.email} nPosts={this.state.myPosts.length} />
+
+          
 
      <View style={styles.perfil}>
+  <Perfil mail={auth.currentUser.email} nPosts={this.state.myPosts.length} />
 
      </View>
 
@@ -76,10 +78,7 @@ class Profile extends Component {
                 renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data}/>}
                 
             />
-            <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
  
-                <Text> CERRAR SESION </Text>
-            </TouchableOpacity>
 
         </View>
         </>
@@ -121,6 +120,18 @@ const styles = StyleSheet.create({
     imagehome: {
         height: 60,
         width: 200,
+    },
+
+    perfil:{
+        justifyContent: 'space-between',
+        borderWidth: 5,
+        borderColor: "rgb(148, 5, 245)",
+
+    },
+
+    cerrar: {
+        color: "rgb(148, 5, 245)",
+
     }
 })
 
