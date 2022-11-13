@@ -80,14 +80,20 @@ render() {
     return (
         <View style={styles.container}>
         <View style={styles.container1}>
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'Profile',
+                {id:this.props.id}
+                )}>
             <Text >{this.props.data.owner}</Text>
+        </TouchableOpacity>
+            
         </View>
 
         <View >
         <Image style={styles.image} 
                 source={{uri: this.props.data.foto}}
                 resizeMode='contain'/>
-          </View>
+        </View>
         
         <View style={styles.likeycoment}>
 
