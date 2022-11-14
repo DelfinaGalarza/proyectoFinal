@@ -57,16 +57,16 @@ class Profile extends Component {
              resizeMode= 'contain'/>
              <Text style={styles.texthome}> You Party</Text>
              
-             <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
-                <Text style={styles.cerrar}> CERRAR SESION </Text>
-            </TouchableOpacity>
+             
      </View>
 
           
 
      <View style={styles.perfil}>
   <Perfil mail={auth.currentUser.email} nPosts={this.state.myPosts.length} />
-
+        <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
+                <Text style={styles.cerrar}> CERRAR SESION </Text>
+            </TouchableOpacity>
      </View>
 
         <View 
