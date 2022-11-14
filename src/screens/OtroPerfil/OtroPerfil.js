@@ -10,7 +10,6 @@ import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Post from '../../components/Post/Post'
 import OPerfil from '../../components/OPerfil/OPerfil'
-import { TouchableOpacity } from 'react-native-web'
 
 class OtroPerfil extends Component {
     constructor(props){
@@ -18,20 +17,20 @@ class OtroPerfil extends Component {
         this.state={
             usuario:[],
             susPosts: [],
-            userId: props.route.params.id,
+            userId: props.route.params.id
         }
     }
 
     componentDidMount(){
         db.collection('users')
-        .doc(this.state.id) //ya tengo claro que voy a recibir solo uno por eso despues no hago foreach
+        .doc(this.state.userId) //ya tengo claro que voy a recibir solo uno por eso despues no hago foreach
         .onSnapshot(doc =>{ //solo tra un doc de regreso
         this.setState ({
             usuario: doc.data(), //se extrae y se guarda 
             })
         })
         
-        db.collection('posts').where('owner', '==', this.state.susPosts).onSnapshot(docs => {
+        db.collection('posts').where('owner', '==', this.state.userId).onSnapshot(docs => {
             let posts = []
             docs.forEach(doc => {
                 posts.push({
@@ -60,7 +59,7 @@ class OtroPerfil extends Component {
     
 
      <View style={styles.perfil}>
-        <OPerfil mail={this.state.usuario.email} name={this.state.usuario.usuario} nPosts={this.state.susPosts.length} />
+            <OPerfil mail={this.state.usuario.email} name={this.state.usuario.usuario} nPosts={this.state.susPosts.length} />
 
      </View>
 
