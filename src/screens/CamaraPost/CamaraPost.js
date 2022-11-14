@@ -5,7 +5,7 @@ import Camara from '../../components/Camara/Camara'
 import Home from '../Home/Home'
 import { setStatusBarBackgroundColor } from 'expo-status-bar'
 
-class Posts extends Component {
+class CamaraPost extends Component {
   
     constructor(props){
         super(props)
@@ -76,6 +76,6 @@ const styles = StyleSheet.create({
         borderWidth:1,
     }
 })
-export default Posts
+export default CamaraPost
 
 

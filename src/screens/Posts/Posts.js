@@ -45,7 +45,7 @@ class Posts extends Component {
                     <Text style={styles.sacarfoto}> Tomar foto </Text>
             </TouchableOpacity>
         
-            <TouchableOpacity onPress={()=> this.tomarFoto()}>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('FotoCarrete')}>
                     <Text style={styles.sacarfoto}> Seleccionar del carrete </Text>
             </TouchableOpacity>
             
