@@ -19,28 +19,21 @@ class Register extends Component {
         }
     }
 
-    registrar(email, password){
+    registrar(email, password, name, foto, bio){
         auth.createUserWithEmailAndPassword(email, password)
-        .then( resp => 
-            db.collection('users').add({
-
-            }).then(()=>this.props.navigation.navigate('TabNavigation'))
-            
-            )
+        .then( resp => db.collection('users').add({
+                owner:auth.currentUser.email,
+                createdAt: Date.now(),
+                name: name,
+                foto: foto,
+                bio: bio,
+            })
+            .catch(err => console.log (err))
+                )
+                .then(()=>this.props.navigation.navigate('Home'))
         .catch( err => this.setState({error:err.message}))
     }
 
-    fotoPerfil(text){
-        db.collection('User').add({
-            owner:auth.currentUser.email,
-            createdAt: Date.now(),
-            name: text,
-            foto: this.state.fotoUrl
-        })
-        .then(()=> {this.props.navigation.navigate('Home')})
-        .catch(err=> console.log(err))
-    
-    }
     
     cuandoSubaLaFoto(url){
         this.setState({
@@ -97,8 +90,8 @@ class Register extends Component {
                     keyboardType='default'
                     style={styles.input}
                     />
-                <TouchableOpacity onPress={()=> this.fotoPerfil(this.state.name)}>
-                    <Text> Cargar foto de perfil</Text>
+                <TouchableOpacity onPress={()=> this.registrar(this.state.email, this.state.password, this.state.name, this.state.fotoUrl, this.state.bio)}>
+                    <Text> Registrar usuario</Text>
                 </TouchableOpacity>
                 {/* <TouchableOpacity onPress={()=> this.reintentar(this.state.description)}>
                     <Text> Sacar otra foto</Text>
@@ -108,11 +101,7 @@ class Register extends Component {
                 
             </View>
         
-                <View>
-                    <TouchableOpacity onPress={()=> this.registrar(this.state.email, this.state.password)}>
-                        <Text>Registrar usuario</Text>
-                    </TouchableOpacity>
-                </View>
+               
 
                 <View>
                     <Text>Ya tienes una cuenta?</Text>
