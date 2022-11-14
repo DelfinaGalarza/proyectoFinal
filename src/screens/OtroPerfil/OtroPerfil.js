@@ -17,17 +17,18 @@ class OtroPerfil extends Component {
         super(props)
         this.state={
             susPosts:[],
-            userId: props.route.params.id
+            userId: props.route.params.id,
         }
     }
 
     componentDidMount(){
-        db.collection('posts').where('owner', '==', userId).onSnapshot(docs => {
+        db.collection('posts').where('owner', '==', this.state.userId).onSnapshot(docs => {
             let susPosteos = []
             docs.forEach(doc => {
                 susPosteos.push({
                     id: doc.id,
                     data:doc.data(),
+                    owner: doc.data().owner
                 })
             })
             this.setState({
@@ -51,7 +52,7 @@ class OtroPerfil extends Component {
           
 
      <View style={styles.perfil}>
-  <OPerfil mail={this.state.userId} nPosts={this.state.susPosts.length} />
+  <OPerfil mail={this.state.susPosts.owner} nPosts={this.state.susPosts.length} />
 
      </View>
 
