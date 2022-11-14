@@ -143,13 +143,24 @@ render() {
            
         
         <View style={styles.coment}>
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+            {
+                this.state.cantComments >= 1 ?
+                <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                    'Comments',
+                    {id:this.props.id}
+                    )}>
+                <Text style={styles.comentario}>ver los {this.state.cantComments} comentarios</Text>
+    
+            </TouchableOpacity> :
+
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'Comments',
                 {id:this.props.id}
                 )}>
-            <Text style={styles.comentario}>ver los {this.state.cantComments} comentarios</Text>
-
-        </TouchableOpacity>
+                <Text style={styles.comentario}>Aun no hay comentarios</Text>
+            </TouchableOpacity>
+            }
+        
         
         </View>
 
