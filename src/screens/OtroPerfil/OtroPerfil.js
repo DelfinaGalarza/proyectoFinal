@@ -16,23 +16,31 @@ class OtroPerfil extends Component {
     constructor(props){
         super(props)
         this.state={
-            susPosts:[],
+            usuario:[],
+            susPosts: [],
             userId: props.route.params.id,
         }
     }
 
     componentDidMount(){
-        db.collection('posts').where('owner', '==', this.state.userId).onSnapshot(docs => {
-            let susPosteos = []
+        db.collection('users')
+        .doc(this.state.id) //ya tengo claro que voy a recibir solo uno por eso despues no hago foreach
+        .onSnapshot(doc =>{ //solo tra un doc de regreso
+        this.setState ({
+            usuario: doc.data(), //se extrae y se guarda 
+            })
+        })
+        
+        db.collection('posts').where('owner', '==', this.state.susPosts).onSnapshot(docs => {
+            let posts = []
             docs.forEach(doc => {
-                susPosteos.push({
+                posts.push({
                     id: doc.id,
                     data:doc.data(),
-                    owner: doc.data().owner
                 })
             })
             this.setState({
-                susPosts: susPosteos,
+                susPosts: posts,
             })
         })
     }
@@ -44,15 +52,15 @@ class OtroPerfil extends Component {
             <View style={styles.headerhome}> 
 
             <Image style={styles.imagehome}
-             source={require('../../../assets/iconoWP.png')}
-             resizeMode= 'contain'/>
-             <Text style={styles.texthome}> You Party</Text>
-     </View>
+            source={require('../../../assets/iconoWP.png')}
+            resizeMode= 'contain'/>
+            <Text style={styles.texthome}> You Party</Text>
+    </View>
 
-          
+    
 
      <View style={styles.perfil}>
-  <OPerfil mail={this.state.susPosts.owner} nPosts={this.state.susPosts.length} />
+        <OPerfil mail={this.state.usuario.email} name={this.state.usuario.usuario} nPosts={this.state.susPosts.length} />
 
      </View>
 

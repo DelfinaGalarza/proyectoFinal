@@ -22,6 +22,7 @@ render() {
         <View style={styles.perfil}>
 
         <View style={styles.own}>
+        <Text >{this.props.name}</Text>
         <Text >{this.props.mail}</Text>
         </View>
 
