@@ -8,6 +8,7 @@ import Register from '../screens/Register/Register'
 import TabNavigation from './TabNavigation'
 import Comments from '../screens/Comments/Comments'
 import Profile from '../screens/Profile/Profile'
+import OtroPerfil from '../screens/OtroPerfil/OtroPerfil'
 
 const Stack = createNativeStackNavigator()
 
@@ -61,6 +62,12 @@ class MainNavigation extends Component {
                     <Stack.Screen
                       name='Profile'
                       component={Profile}
+                      unmountOnBlur={true}
+                      />
+
+                    <Stack.Screen
+                      name='OtroPerfil'
+                      component={OtroPerfil}
                       unmountOnBlur={true}
                       />
 
