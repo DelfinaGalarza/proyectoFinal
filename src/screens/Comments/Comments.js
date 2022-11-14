@@ -61,11 +61,10 @@ class Comments extends Component {
         keyExtractor= {item => item.createdAt.toString()}
         renderItem={({item}) => <CommentsInd comentario={item}  />}
         // renderItem ={({item}) => <Text>{item.comment}</Text>}
-        
 
-
-        
         />
+
+        
       <View>
       <TextInput
       placeholder= 'Escribi un comentario' 

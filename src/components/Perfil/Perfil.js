@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
+import * as ImagePicker from 'expo-image-picker'
+import {storage} from '../../firebase/config'
 
 
 class Perfil extends Component {
@@ -10,11 +12,34 @@ class Perfil extends Component {
     constructor(props){
         super(props)
         this.state = {
-            
+            fotoSubida: "", 
         }
     }
     componentDidMount(){
     }
+
+
+    subirfoto(){
+        ImagePicker.launchImageLibraryAsync()
+        .then(resp => {
+            fetch(resp.uri)
+            .then(data => data.blob())
+            .then(img => {
+                console.log(storage)
+                const ref = storage.ref(`fotoSubida/${Date.now()}.jpg`)
+                ref.put(img)
+                .then(()=> {
+                    ref.getDownloadURL()
+                    .then(url => {
+                            this.setState({fotoSubida:url})
+                        }
+                    )
+                })
+            })
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+}
 
 
 render() {
@@ -29,6 +54,12 @@ render() {
         <Text>{this.props.nPosts}</Text>
         <Text style={styles.subtitle}> Publicaciones </Text>
         </View>
+
+        <View>
+                    <TouchableOpacity onPress={()=> this.subirfoto()}>
+                        <Text style={styles.botton}>Subir foto del carrete</Text>
+                    </TouchableOpacity>
+                </View>
 
         {/* <View style={styles.lik}>
         <Text>{this.state.myLikes.length}</Text>

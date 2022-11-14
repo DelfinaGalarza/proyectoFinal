@@ -5,6 +5,7 @@ import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
 
 
+
 class Post extends Component {
 
     constructor(props){
@@ -34,6 +35,7 @@ class Post extends Component {
         }
 
     }
+
 
     like(){
         db
@@ -88,6 +90,9 @@ render() {
         </TouchableOpacity>
             
         </View>
+
+
+
 
         <View >
         <Image style={styles.image} 
