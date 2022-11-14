@@ -82,7 +82,7 @@ render() {
         <View style={styles.container1}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'OtroPerfil',
-                {id:this.props.id}
+                {email:this.props.data.owner}
                 )}>
             <Text >{this.props.data.owner}</Text>
         </TouchableOpacity>
