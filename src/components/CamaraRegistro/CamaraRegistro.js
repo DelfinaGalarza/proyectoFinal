@@ -48,6 +48,13 @@ class CamaraRegistro extends Component {
         })
         .catch(err => console.log(err))
     }
+    rechazarFoto(){
+        this.setState({
+            mostrarCamara: true,
+            fotoUri:''
+        })
+    }
+
 
 
   render() {
@@ -75,8 +82,9 @@ class CamaraRegistro extends Component {
                 <TouchableOpacity onPress={()=> this.aceptarFoto(this.state.fotoUri)}>
                     <Text>Aceptar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text>Rechazar</Text> 
+                
+                <TouchableOpacity onPress={()=> this.rechazarFoto(this.state.fotoUri) }>
+                    <Text>Sacar otra</Text> 
                 </TouchableOpacity>
             </> :
             <Text>No tienes permiso para usar la Camara</Text>
