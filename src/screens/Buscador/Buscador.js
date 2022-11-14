@@ -3,6 +3,8 @@ import React, { Component} from 'react'
 import {db} from '../../firebase/config'
 import {auth} from '../../firebase/config'
 import {SearchBar } from 'react-native'
+import { Feather, Entypo } from "@expo/vector-icons";
+
 
 
 
@@ -56,48 +58,78 @@ class Buscador extends Component {
             <Image style={styles.imagebusc}
              source={require('../../../assets/iconoWP.png')}
              resizeMode= 'contain'/>
+
              <Text style={styles.textbusc}> Search Party</Text>
      </View>
 
-    
-    <TextInput 
-    style={ styles.buscador}
+     <View style={styles.containertodo}> 
+ <View style={styles.container}> 
+
+
+    <TextInput style={ styles.buscador}
              onChangeText={ text => this.setState( {busqueda:text} )}
              placeholder='Ingresa tu busqueda'
              value={this.state.busqueda}>
     </TextInput>
+    
 
+ <Feather
+          name="search"
+          size={20}
+          style={{ marginLeft: 1 }}
+        />
 
     <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
     <Text style={styles.buscar}> Buscar</Text>
     </TouchableOpacity>
 
+
+</View>   
+
          
-        <FlatList
+        <FlatList 
           data={this.state.users}
           keyExtractor={(item) => item.id}
           renderItem= {({item}) => <Text>{item.data.owner}</Text>}
 
         /> 
-    
+</View>
 
     </>
     )
   }
 }
 
-
 const styles = StyleSheet.create({
     
-    container:{
-        flex:1,
-        justifyContent:'center',
-        paddingHorizontal:32,
-        width: '100%',
+
+    containertodo:{
+        flex:1, 
         backgroundColor: "rgb(148, 5, 245)",
     },
 
-    headerbusc:{
+    container: {
+        margin: 15,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
+        width: "90%",
+    
+      },
+
+
+    buscador:{
+        padding: 10,
+        flexDirection: "row",
+        width: "80%",
+        backgroundColor: "#d9dbda",
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "space-evenly",
+      },
+
+      headerbusc:{
         backgroundColor: 'black', 
         alignItems: 'center',
         justifyContent: 'center',
@@ -114,7 +146,8 @@ const styles = StyleSheet.create({
     imagebusc: {
         height: 60,
         width: 200,
-    }
+    },
+
 })
 
 export default Buscador
