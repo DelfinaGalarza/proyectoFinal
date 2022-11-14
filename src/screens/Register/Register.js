@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
-import { auth } from '../../firebase/config'
+import { auth, db } from '../../firebase/config'
 import CamaraRegistro from '../../components/CamaraRegistro/CamaraRegistro'
 
 
@@ -21,7 +21,12 @@ class Register extends Component {
 
     registrar(email, password){
         auth.createUserWithEmailAndPassword(email, password)
-        .then( resp => this.props.navigation.navigate('TabNavigation'))
+        .then( resp => 
+            db.collection('users').add({
+
+            }).then(()=>this.props.navigation.navigate('TabNavigation'))
+            
+            )
         .catch( err => this.setState({error:err.message}))
     }
 

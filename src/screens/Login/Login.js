@@ -10,7 +10,8 @@ class Login extends Component {
         this.state={
             mail:'',
             pass:'',
-            logueado: false
+            logueado: false,
+            error: ''
         }
     }
 
@@ -25,7 +26,12 @@ class Login extends Component {
     loguear(mail, pass){
         auth.signInWithEmailAndPassword(mail, pass)
         .then( resp => this.props.navigation.navigate('TabNavigation'))
-        .catch(err => console.log(err))
+        .catch(err => {console.log(err) 
+        this.setState({
+            error: err.message,
+        }
+        )}
+        )
     }
 
   render() {
@@ -63,6 +69,7 @@ class Login extends Component {
                    <View style={styles.reg}> <Text>Registrate</Text> </View>
                 </TouchableOpacity>
             </View>
+            <Text style={styles.error}> {this.state.error} </Text>
         </View>
       </View>
       </>
@@ -113,7 +120,10 @@ const styles = StyleSheet.create({
       reg: {
           color: 'white',
         
-          }
+          },
+      error: {
+          marginTop: 30, 
+      }    
      
 })
 
