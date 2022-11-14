@@ -41,13 +41,15 @@ class Posts extends Component {
         return (
         <View style={styles.container}>
 
+
             <TouchableOpacity onPress={()=> this.props.navigation.navigate('CamaraPost')}>
                     <Text style={styles.sacarfoto}> Tomar foto </Text>
             </TouchableOpacity>
-        
+
             <TouchableOpacity onPress={()=>this.props.navigation.navigate('FotoCarrete')}>
                     <Text style={styles.sacarfoto}> Seleccionar del carrete </Text>
             </TouchableOpacity>
+            
             
            
         </View>
@@ -58,10 +60,17 @@ class Posts extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        justifyContent: 'center',
     },
-    input:{
-        height:32,
-        borderWidth:1,
+
+    sacarfoto:{
+        borderColor: '#ccc',
+        borderWidth: 2,
+        marginBottom: 10,
+        padding: 10,
+        fontSize: 15,
+        borderRadius: 5,
+        backgroundColor: "rgb(148, 5, 245)"
     }
 })
 export default Posts
