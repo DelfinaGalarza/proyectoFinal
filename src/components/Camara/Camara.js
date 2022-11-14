@@ -53,7 +53,8 @@ class Camara extends Component {
   render() {
     return (
       <View style={styles.container}>
-        
+
+
         {
             this.state.mostrarCamara ? 
             <>

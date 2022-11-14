@@ -9,6 +9,8 @@ import TabNavigation from './TabNavigation'
 import Comments from '../screens/Comments/Comments'
 import Profile from '../screens/Profile/Profile'
 import OtroPerfil from '../screens/OtroPerfil/OtroPerfil'
+import CamaraPost from '../screens/CamaraPost/CamaraPost'
+
 
 const Stack = createNativeStackNavigator()
 
@@ -68,6 +70,12 @@ class MainNavigation extends Component {
                     <Stack.Screen
                       name='OtroPerfil'
                       component={OtroPerfil}
+                      unmountOnBlur={true}
+                      />
+
+                    <Stack.Screen
+                      name='CamaraPost'
+                      component={CamaraPost}
                       unmountOnBlur={true}
                       />
 

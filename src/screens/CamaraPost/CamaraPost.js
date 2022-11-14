@@ -40,15 +40,27 @@ class Posts extends Component {
     render() {
         return (
         <View style={styles.container}>
-
-            <TouchableOpacity onPress={()=> this.props.navigation.navigate('CamaraPost')}>
-                    <Text style={styles.sacarfoto}> Tomar foto </Text>
-            </TouchableOpacity>
         
-            <TouchableOpacity onPress={()=> this.tomarFoto()}>
-                    <Text style={styles.sacarfoto}> Seleccionar del carrete </Text>
+        
+    {
+        this.state.mostrarCamara ?
+        <Camara
+
+        cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
+        /> :
+        <>
+            <TextInput
+            placeholder='Deja tu descripcion'
+            onChangeText={text => this.setState({description: text})}
+            value={this.state.description}
+            keyboardType='default'
+            style={styles.input}
+            />
+            <TouchableOpacity onPress={()=> this.publicarPost(this.state.description)}>
+                <Text>PUBLICAR POSTEO</Text>
             </TouchableOpacity>
-            
+        </>
+    }
            
         </View>
         )
@@ -65,3 +77,5 @@ const styles = StyleSheet.create({
     }
 })
 export default Posts
+
+
