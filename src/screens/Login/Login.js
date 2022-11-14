@@ -58,9 +58,16 @@ class Login extends Component {
              secureTextEntry={true}
             />
             <View>
-                <TouchableOpacity onPress={()=> this.loguear(this.state.mail, this.state.pass)} style= {styles.inicia}>
+                {
+                    this.state.mail != '' && this.state.pass != '' ?
+                    <TouchableOpacity onPress={()=> this.loguear(this.state.mail, this.state.pass)} style= {styles.inicia}>
                     <Text>Iniciar sesión</Text>
-                </TouchableOpacity>
+                    </TouchableOpacity> :
+                    <TouchableOpacity onPress={()=> this.loguear(this.state.mail, this.state.pass)} style= {styles.inicia} disabled={true}>
+                    <Text>Iniciar sesión</Text>
+                    </TouchableOpacity>
+
+                }
             </View>
 
             <View style= {styles.registrarse}>
