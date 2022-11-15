@@ -3,7 +3,8 @@ import React, { Component} from 'react'
 import {db} from '../../firebase/config'
 import {auth} from '../../firebase/config'
 import {SearchBar } from 'react-native'
-import { Feather, Entypo } from "@expo/vector-icons";
+import { Feather, Entypo } from "@expo/vector-icons"
+import {ImageBackground} from 'react-native'
 
 
 
@@ -62,6 +63,11 @@ class Buscador extends Component {
              <Text style={styles.textbusc}> Search Party</Text>
      </View>
 
+      <ImageBackground
+    source= {require('../../../assets/fotobuscador.jpeg')}
+    style= {{width: '100%', height: '90%'}}>
+        </ImageBackground>
+
      <View style={styles.containertodo}> 
  <View style={styles.container}> 
 
@@ -100,10 +106,10 @@ class Buscador extends Component {
             <Text style={styles.user} >{item.data.owner} </Text> </TouchableOpacity> }
             /> 
          }
-        
-
-        
+           
 </View>
+
+
 
     </>
     )
