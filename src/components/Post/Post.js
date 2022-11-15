@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
         flex: 1,
         borderWidth: 3,
         borderRadius: 10,
+        
 
     
     },
@@ -236,7 +237,7 @@ const styles = StyleSheet.create({
     },
     image:{
         height: 265,
-        width: 100000,
+        width: 273,
         border: 'black',
         marginBottom: 30,
 
@@ -255,6 +256,8 @@ const styles = StyleSheet.create({
         justifyContent: 'left',
         flexDirection: 'row',
         marginBottom: 20,
+    
+        
     },
 
     coment: {

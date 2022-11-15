@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
        height: 300,
     },
     camara:{
-        height:150,
-        width: '20',
+        height:90,
+        width:'100%',
         borderBottomColor: 'black',
     },
     image:{

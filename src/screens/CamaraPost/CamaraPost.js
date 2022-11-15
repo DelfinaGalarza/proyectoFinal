@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     input:{
         height:32,
         borderWidth:1,
+        
     }
 })
 export default CamaraPost
