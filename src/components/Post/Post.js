@@ -81,6 +81,7 @@ class Post extends Component {
 render() {
     return (
         <View style={styles.container}>
+
         <View style={styles.container1}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'OtroPerfil',
@@ -94,18 +95,21 @@ render() {
 
 
 
-        <View >
+        <View style={styles.container2}>
         <Image style={styles.image} 
                 source={{uri: this.props.data.foto}}
                 resizeMode='contain'/>
         </View>
         
-        <View style={styles.likeycoment}>
+        <View style={styles.container3}>
 
         <View style={styles.like}>
+            <View>
             <Text>{this.state.cantLikes}</Text>
+            </View>
+            
 
-        
+        <View>
         {
             this.state.isMyLike ?
                 <TouchableOpacity onPress={()=> this.unlike()}>
@@ -116,6 +120,8 @@ render() {
                     <FontAwesome name='heart-o' color='red' size={32} />
                 </TouchableOpacity>
         }
+        </View>
+        
 
         <View style={styles.comment} >
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
@@ -125,28 +131,30 @@ render() {
             <FontAwesome name='comment' size={32} />
 
         </TouchableOpacity>
-        {/* <TouchableOpacity onPress={()=> this.props.navigation.navigate (
-                'Likes',
-                {id:this.props.id}
-                )}>
-            <Text style={styles.agregar}>Los likes</Text>
+        </View>
 
-        </TouchableOpacity> */}
+        <View style={styles.likes}>
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'Likes',
+                {email: auth.currentUser.email}
+                )}>
+            <Text style={styles.agregar}>Quienes van</Text>
+
+        </TouchableOpacity>
         </View>
     
         </View>
 
 
         </View>
-        
 
-          <View style={styles.container2}>
+        <View style={styles.container4}>
+
+            <View>
             <Text style={styles.subtitle}>Descripcion: {this.props.data.description}</Text>
             </View>
-       
-
-           
-        
+            
+            
         <View style={styles.coment}>
             {
                 this.state.cantComments >= 1 ?
@@ -165,7 +173,7 @@ render() {
                 <Text style={styles.comentario}>Aun no hay comentarios</Text>
             </TouchableOpacity>
             }
-        
+        </View>
         
         </View>
 
@@ -208,16 +216,29 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         color: 'black',
         marginBottom: 30,
-        width: '100%',
-        
-    },
-    likeycoment:{
-        justifyContent: 'space-around',
-        flexDirection: 'row'
+        width: '100%', 
     },
 
-    container2:{
-        flex:3,
+    container3:{
+        flexDirection: 'row',
+        flex:1,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    },
+    like: {
+        flexDirection: 'row',
+        marginBottom: 20,
+    },
+    likes: {
+        marginBottom: 20,
+    },
+    comment: {
+        marginBottom: 20,
+    },
+
+    container4:{
+        flex:1,
         margintop: 60,
         marginBottom: 10,
 
@@ -251,20 +272,6 @@ const styles = StyleSheet.create({
     descripcion:{
         color: 'black',
     },
-    
-    like: {
-        justifyContent: 'left',
-        flexDirection: 'row',
-        marginBottom: 20,
-    
-        
-    },
-
-    coment: {
-        color: "rgb(148, 5, 245)",
-        textDecorationLine: 'underline',
-    },
-
     comentario: {
         color: "rgb(148, 5, 245)",
     },

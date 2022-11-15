@@ -2,8 +2,6 @@ import { Text, View, FlatList, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Post from '../../components/Post/Post'
-import Comments from '../Comments/Comments'
-import Likes from '../Likes/Likes'
 
 import { BottomTabBarHeightCallbackContext } from '@react-navigation/bottom-tabs'
 

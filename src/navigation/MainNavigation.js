@@ -11,6 +11,7 @@ import Profile from '../screens/Profile/Profile'
 import OtroPerfil from '../screens/OtroPerfil/OtroPerfil'
 import CamaraPost from '../screens/CamaraPost/CamaraPost'
 import FotoCarrete from '../screens/FotoCarrete/FotoCarrete'
+import Likes from '../screens/Likes/Likes'
 
 const Stack = createNativeStackNavigator()
 
@@ -85,11 +86,11 @@ class MainNavigation extends Component {
                       unmountOnBlur={true}
                       />
 
-                    {/* <Stack.Screen
+                    <Stack.Screen
                       name='Likes'
                       component={Likes}
                       unmountOnBlur={true}
-                      /> */}
+                      />
 
               </Stack.Navigator>
           </NavigationContainer>
