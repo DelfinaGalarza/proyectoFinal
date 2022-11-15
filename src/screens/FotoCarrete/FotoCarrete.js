@@ -5,10 +5,7 @@ import Camara from '../../components/Camara/Camara'
 import Home from '../Home/Home'
 import { setStatusBarBackgroundColor } from 'expo-status-bar'
 import * as ImagePicker from 'expo-image-picker'
-<<<<<<< HEAD
 import {storage} from '../../firebase/config'
-=======
->>>>>>> ca7464bba4ebdf944ca3e1018cb9215da93afed5
 
 class FotoCarrete extends Component {
   
@@ -16,10 +13,6 @@ class FotoCarrete extends Component {
         super(props)
         this.state={
             description:'',
-<<<<<<< HEAD
-=======
-            mostrarCamara:true,
->>>>>>> ca7464bba4ebdf944ca3e1018cb9215da93afed5
             fotoSubida:''
         }
     }
@@ -79,39 +72,18 @@ class FotoCarrete extends Component {
                     </TouchableOpacity>
         :
         
-<<<<<<< HEAD
         <TouchableOpacity onPress={()=> this.subirfoto()}>
                         <Text style={styles.botton}>Subir foto del carrete</Text>
                     </TouchableOpacity>
 
             
        
-    
+}
            
-=======
-        <>
-        <Image
-                    style={styles.image}
-                    source={{uri: this.state.fotoSubida}}
-                />
-
-            <TextInput
-            placeholder='Deja tu descripcion'
-            onChangeText={text => this.setState({description: text})}
-            value={this.state.description}
-            keyboardType='default'
-            style={styles.input}
-            />
-            <TouchableOpacity onPress={()=> this.publicarPost(this.state.description)}>
-                <Text>PUBLICAR POSTEO</Text>
-            </TouchableOpacity>
-        </>
-    }
-        
->>>>>>> ca7464bba4ebdf944ca3e1018cb9215da93afed5
         </View>
         )
     }
+    
 }
     
 
