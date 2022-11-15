@@ -139,10 +139,23 @@ const styles = StyleSheet.create({
     email:{
          marginTop:5,
          marginBottom: 5,
+         borderWidth:1,
+
     },
-    titulo: {
-        
-    }
+  password: {
+    marginTop:5,
+    marginBottom: 5,
+    borderWidth:1,
+
+},
+ usuario:{
+    marginTop:5,
+    marginBottom: 5,
+    borderWidth:1,
+ },
+
+ 
+    
 })
 
 export default Register
