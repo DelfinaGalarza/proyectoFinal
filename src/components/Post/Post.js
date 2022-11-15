@@ -104,20 +104,15 @@ render() {
         <View style={styles.container3}>
 
         <View style={styles.like}>
-            <View>
-            <Text>{this.state.cantLikes}</Text>
-            </View>
-            
-
-        <View>
+            <Text>{this.state.cantLikes} van</Text>
         {
             this.state.isMyLike ?
                 <TouchableOpacity onPress={()=> this.unlike()}>
-                    <FontAwesome name='heart' color='red' size={32} />
+                    <FontAwesome name='check' color='black' size={32} />
                 </TouchableOpacity>
             :
                 <TouchableOpacity onPress={()=> this.like()}>
-                    <FontAwesome name='heart-o' color='red' size={32} />
+                    <FontAwesome name='user-plus' color='black' size={32} />
                 </TouchableOpacity>
         }
         </View>
@@ -143,9 +138,6 @@ render() {
         </TouchableOpacity>
         </View>
     
-        </View>
-
-
         </View>
 
         <View style={styles.container4}>
@@ -220,6 +212,8 @@ const styles = StyleSheet.create({
     },
 
     container3:{
+        display: 'flex',
+        flexWrap: 'wrap',
         flexDirection: 'row',
         flex:1,
         width: '100%',
@@ -227,14 +221,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     },
     like: {
-        flexDirection: 'row',
-        marginBottom: 20,
+        marginBottom: 20
     },
     likes: {
-        marginBottom: 20,
+        marginBottom: 20
     },
     comment: {
-        marginBottom: 20,
+        marginBottom: 20
     },
 
     container4:{
@@ -266,7 +259,14 @@ const styles = StyleSheet.create({
     },
 
     agregar:{
-        color: 'black',
+        color: 'white',
+        borderColor: '#ccc',
+        borderWidth: 2,
+        marginBottom: 10,
+        padding: 10,
+        fontSize: 15,
+        borderRadius: 5,
+        backgroundColor: 'black'
     },
 
     descripcion:{
