@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     header:{
         backgroundColor: 'black', 
         alignItems: 'center',
+        justifyContent: "space-evenly",
         height: '110',
         padding: 14,
     },
@@ -89,6 +90,10 @@ const styles = StyleSheet.create({
         width: 100,
     },      
     
+    bottonarriba:{
+        color: "rgb(148, 5, 245)",
+
+    },
 })
 
 export default Home

@@ -59,7 +59,7 @@ class Profile extends Component {
              
              <View style={styles.cerrar}>
              <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
-                <Text style={styles.cerrar}> CERRAR SESION </Text>
+                <Text style={styles.cerrar}> Cerrar Sesion </Text>
             </TouchableOpacity>
             </View>
 
@@ -68,7 +68,7 @@ class Profile extends Component {
           
 
      <View style={styles.perfil}>
-  <Perfil mail={auth.currentUser.email} nPosts={this.state.myPosts.length} />
+  <Perfil  nPosts={this.state.myPosts.length} mail={auth.currentUser.email} />
 
      </View>
 
@@ -130,11 +130,14 @@ const styles = StyleSheet.create({
         borderWidth: 5,
         borderColor: "rgb(148, 5, 245)",
 
+
     },
 
     cerrar: {
         color: "rgb(148, 5, 245)",
         alignItems: 'right', 
+        textDecorationLine: 'underline',
+
 
 
     }

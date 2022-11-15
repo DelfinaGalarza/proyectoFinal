@@ -3,6 +3,9 @@ import React, { Component} from 'react'
 import {db} from '../../firebase/config'
 import {auth} from '../../firebase/config'
 import {SearchBar } from 'react-native'
+import { Feather, Entypo } from "@expo/vector-icons"
+import {ImageBackground} from 'react-native'
+
 
 
 
@@ -11,7 +14,7 @@ class Buscador extends Component {
     constructor(props){
         super(props)
         this.state={
-            loading: false,
+            loading: true,
             users:[],
             busqueda: '',
         }
@@ -37,13 +40,13 @@ class Buscador extends Component {
     buscar(text){
 
         //Filtramos dependiendo de que recibe por parametro 
-
         let usersFilter = this.state.users.filter(elm => 
             elm.data.owner.toUpperCase().includes(text.toUpperCase()))
 
         this.setState({
             user: text,
             users: usersFilter, 
+            loading: false
         })
     }
 
@@ -56,48 +59,102 @@ class Buscador extends Component {
             <Image style={styles.imagebusc}
              source={require('../../../assets/iconoWP.png')}
              resizeMode= 'contain'/>
+
              <Text style={styles.textbusc}> Search Party</Text>
      </View>
 
-    
-    <TextInput 
-    style={ styles.buscador}
+      <ImageBackground
+    source= {require('../../../assets/fotobuscador.jpeg')}
+    style= {{width: '100%', height: '90%'}}>
+        </ImageBackground>
+
+     <View style={styles.containertodo}> 
+ <View style={styles.container}> 
+
+
+    <TextInput style={ styles.buscador}
              onChangeText={ text => this.setState( {busqueda:text} )}
              placeholder='Ingresa tu busqueda'
              value={this.state.busqueda}>
     </TextInput>
+    
 
+ <Feather
+          name="search"
+          size={20}
+          style={{ marginLeft: 1 }}
+        />
 
     <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
     <Text style={styles.buscar}> Buscar</Text>
     </TouchableOpacity>
 
-         
-        <FlatList
-          data={this.state.users}
-          keyExtractor={(item) => item.id}
-          renderItem= {({item}) => <Text>{item.data.owner}</Text>}
 
-        /> 
-    
+</View>   
+
+         {
+            this.state.loading ?
+            '':
+            
+            <FlatList 
+            data={this.state.users}
+            keyExtractor={(item) => item.id}
+            renderItem= {({item}) => <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'OtroPerfil',
+                {email:this.props.data.owner}
+                )}>
+            <Text style={styles.user} >{item.data.owner} </Text> </TouchableOpacity> }
+            /> 
+         }
+           
+</View>
+
+
 
     </>
     )
   }
 }
 
-
 const styles = StyleSheet.create({
     
-    container:{
-        flex:1,
-        justifyContent:'center',
-        paddingHorizontal:32,
-        width: '100%',
+
+    containertodo:{
+        flex:1, 
         backgroundColor: "rgb(148, 5, 245)",
     },
 
-    headerbusc:{
+    container: {
+        margin: 15,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
+        width: "90%",
+    
+      },
+      user:{
+        borderColor: '#ccc',
+        borderWidth: 2,
+        marginBottom: 10,
+        padding: 10,
+        fontSize: 15,
+        borderRadius: 5,
+        backgroundColor: "rgb(148, 5, 245)"
+      },
+
+
+    buscador:{
+        padding: 10,
+        flexDirection: "row",
+        width: "80%",
+        backgroundColor: "#d9dbda",
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "space-evenly",
+      },
+
+      headerbusc:{
         backgroundColor: 'black', 
         alignItems: 'center',
         justifyContent: 'center',
@@ -114,10 +171,8 @@ const styles = StyleSheet.create({
     imagebusc: {
         height: 60,
         width: 200,
-    }
+    },
+
 })
 
 export default Buscador
-
-
-
