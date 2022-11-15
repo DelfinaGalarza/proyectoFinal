@@ -13,7 +13,7 @@ class Buscador extends Component {
     constructor(props){
         super(props)
         this.state={
-            loading: false,
+            loading: true,
             users:[],
             busqueda: '',
         }
@@ -39,13 +39,13 @@ class Buscador extends Component {
     buscar(text){
 
         //Filtramos dependiendo de que recibe por parametro 
-
         let usersFilter = this.state.users.filter(elm => 
             elm.data.owner.toUpperCase().includes(text.toUpperCase()))
 
         this.setState({
             user: text,
             users: usersFilter, 
+            loading: false
         })
     }
 
@@ -86,13 +86,23 @@ class Buscador extends Component {
 
 </View>   
 
-         
-        <FlatList 
-          data={this.state.users}
-          keyExtractor={(item) => item.id}
-          renderItem= {({item}) => <Text>{item.data.owner}</Text>}
+         {
+            this.state.loading ?
+            '':
+            
+            <FlatList 
+            data={this.state.users}
+            keyExtractor={(item) => item.id}
+            renderItem= {({item}) => <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'OtroPerfil',
+                {email:this.props.data.owner}
+                )}>
+            <Text style={styles.user} >{item.data.owner} </Text> </TouchableOpacity> }
+            /> 
+         }
+        
 
-        /> 
+        
 </View>
 
     </>
@@ -116,6 +126,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "90%",
     
+      },
+      user:{
+        borderColor: '#ccc',
+        borderWidth: 2,
+        marginBottom: 10,
+        padding: 10,
+        fontSize: 15,
+        borderRadius: 5,
+        backgroundColor: "rgb(148, 5, 245)"
       },
 
 
