@@ -1,9 +1,10 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity, CameraRoll } from 'react-native'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity, CameraRoll, Image} from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Camara from '../../components/Camara/Camara'
 import Home from '../Home/Home'
 import { setStatusBarBackgroundColor } from 'expo-status-bar'
+import * as ImagePicker from 'expo-image-picker'
 
 class FotoCarrete extends Component {
   
@@ -12,7 +13,7 @@ class FotoCarrete extends Component {
         this.state={
             description:'',
             mostrarCamara:true,
-            fotoUrl:''
+            fotoSubida:''
         }
     }
 
@@ -23,7 +24,7 @@ class FotoCarrete extends Component {
             description: text,
             likes:[],
             comments:[],
-            foto: this.state.fotoUrl
+            foto: this.state.fotoSubida
         })
         .then(()=> {this.props.navigation.navigate('Home')})
         .catch(err=> console.log(err))
@@ -32,7 +33,7 @@ class FotoCarrete extends Component {
 
     cuandoSubaLaFoto(url){
         this.setState({
-            fotoUrl:url,
+            fotoSubida:url,
             mostrarCamara:false
         })
     }
@@ -63,19 +64,38 @@ class FotoCarrete extends Component {
     render() {
         return (
         <View style={styles.container}>
-        
-    
-
-            <TouchableOpacity onPress={()=> this.subirfoto()}>
-                        <Text style={styles.botton}>Subir foto del carrete</Text>
+     
+    {
+        this.state.mostrarCamara ?
+        <TouchableOpacity onPress={()=> this.subirfoto()}>
+                        <Text style={styles.botton}>Seleccionar foto del carrete</Text>
                     </TouchableOpacity>
-       
-    
-           
+        :
+        
+        <>
+        <Image
+                    style={styles.image}
+                    source={{uri: this.state.fotoSubida}}
+                />
+
+            <TextInput
+            placeholder='Deja tu descripcion'
+            onChangeText={text => this.setState({description: text})}
+            value={this.state.description}
+            keyboardType='default'
+            style={styles.input}
+            />
+            <TouchableOpacity onPress={()=> this.publicarPost(this.state.description)}>
+                <Text>PUBLICAR POSTEO</Text>
+            </TouchableOpacity>
+        </>
+    }
+        
         </View>
         )
     }
 }
+    
 
 const styles = StyleSheet.create({
     container:{
