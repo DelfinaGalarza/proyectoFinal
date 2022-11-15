@@ -4,6 +4,8 @@ import {db, auth} from '../../firebase/config'
 import Camara from '../../components/Camara/Camara'
 import Home from '../Home/Home'
 import { setStatusBarBackgroundColor } from 'expo-status-bar'
+import * as ImagePicker from 'expo-image-picker'
+import {storage} from '../../firebase/config'
 
 class FotoCarrete extends Component {
   
@@ -11,8 +13,7 @@ class FotoCarrete extends Component {
         super(props)
         this.state={
             description:'',
-            mostrarCamara:true,
-            fotoUrl:''
+            fotoSubida:''
         }
     }
 
@@ -64,11 +65,11 @@ class FotoCarrete extends Component {
         return (
         <View style={styles.container}>
         
-    
-
-            <TouchableOpacity onPress={()=> this.subirfoto()}>
+        <TouchableOpacity onPress={()=> this.subirfoto()}>
                         <Text style={styles.botton}>Subir foto del carrete</Text>
                     </TouchableOpacity>
+
+            
        
     
            
