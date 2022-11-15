@@ -65,7 +65,6 @@ class Buscador extends Component {
      <View style={styles.containertodo}> 
  <View style={styles.container}> 
 
-
     <TextInput style={ styles.buscador}
              onChangeText={ text => this.setState( {busqueda:text} )}
              placeholder='Ingresa tu busqueda'
@@ -79,15 +78,8 @@ class Buscador extends Component {
           style={{ marginLeft: 1 }}
         />
 
-    <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
-    <Text style={styles.buscar}> Buscar</Text>
-    </TouchableOpacity>
-
-
-</View>   
-
-         
-        <FlatList 
+</View> 
+  <FlatList
           data={this.state.users}
           keyExtractor={(item) => item.id}
           renderItem= {({item}) => <Text>{item.data.owner}</Text>}
