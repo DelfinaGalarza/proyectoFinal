@@ -13,9 +13,9 @@ class LikesInd extends Component {
     render () {
   return (
     <View style= {styles.comento}>
-        
+
         <Text style= {styles.owner}>
-            {this.props.likes}
+            {this.props.likes.owner}
         </Text>
         
     </View>

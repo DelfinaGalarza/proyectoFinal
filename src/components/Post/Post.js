@@ -15,7 +15,7 @@ class Post extends Component {
             cantLikes: props.data.likes.length, 
             cantComments: props.data.comments.length,
             myPosts: [],
-            isMyPost:false
+            isMyPost:false,
         }
     }
     componentDidMount(){
@@ -24,16 +24,12 @@ class Post extends Component {
             isMyPost: true,
         })
        }
-
-
         let myLike = this.props.data.likes.includes(auth.currentUser.email)
-
         if(myLike){
             this.setState({
                 isMyLike:true,
             })
         }
-
     }
 
 
@@ -42,7 +38,10 @@ class Post extends Component {
         .collection('posts')
         .doc(this.props.id)
         .update({
-            likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+            likes: firebase.firestore.FieldValue.arrayUnion({
+            owner: auth.currentUser.email, 
+            createdAt:Date.now(),
+          })
         })
         .then(resp => {
             this.setState({
@@ -58,7 +57,10 @@ class Post extends Component {
         db.collection('posts')
         .doc(this.props.id)
         .update({
-            likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+            likes: firebase.firestore.FieldValue.arrayUnion({
+            owner: auth.currentUser.email, 
+            createdAt: Date.now(),
+          })
         })
         .then(resp => {
             this.setState({
@@ -131,7 +133,7 @@ render() {
         <View style={styles.likes}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'Likes',
-                {email: auth.currentUser.email}
+                {id:this.props.id}
                 )}>
             <Text style={styles.agregar}>Quienes van</Text>
 

@@ -1,10 +1,3 @@
-// class Comments extends Component {
-//     constructor (props){
-//       super (props)
-//       this.state = {
-//         id: props.route.params.id,
-//         aComentarios: [],
- 
 import { Text, View, FlatList, StyleSheet, Image} from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'

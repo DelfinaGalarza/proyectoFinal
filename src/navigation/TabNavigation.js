@@ -5,7 +5,6 @@ import Profile from '../screens/Profile/Profile'
 import Posts from '../screens/Posts/Posts'
 import Home from '../screens/Home/Home'
 import Buscador from '../screens/Buscador/Buscador'
-import Comments from '../screens/Comments/Comments'
 
 
 const Tab = createBottomTabNavigator()
