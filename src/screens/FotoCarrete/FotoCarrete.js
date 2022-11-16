@@ -76,8 +76,6 @@ class FotoCarrete extends Component {
                         <Text style={styles.botton}>Subir foto del carrete</Text>
                     </TouchableOpacity>
 
-            
-       
 }
            
         </View>
