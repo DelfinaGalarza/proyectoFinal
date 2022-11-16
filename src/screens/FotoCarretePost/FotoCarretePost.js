@@ -44,7 +44,7 @@ class FotoCarrete extends Component {
      
      {
         this.state.mostrarCamara ?
-        <Camara
+        <Carrete
 
         cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
         /> :
