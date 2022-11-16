@@ -103,10 +103,10 @@ class Register extends Component {
         
                
 
-                <View>
+                <View style={styles.loguear}>
                     <Text>Ya tienes una cuenta?</Text>
                     <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')}>
-                        <Text>Logueate</Text>
+                       <View style={styles.log}> <Text>Logueate</Text></View>
                     </TouchableOpacity>
                 </View>
                 
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
         borderWidth:1
     },
     image: {
-        marginTop: 25,
+        marginTop: 15,
         height: 150,
         width: '100%',
        justifyContent: 'center',
@@ -153,8 +153,16 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     borderWidth:1,
  },
+loguear:{
+    flexDirection: 'row',
 
- 
+},
+log:{
+    marginLeft: 10, 
+    
+
+
+}
     
 })
 
