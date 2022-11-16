@@ -17,6 +17,29 @@ class FotoCarrete extends Component {
         }
     }
 
+
+    subirfoto(){
+        ImagePicker.launchImageLibraryAsync()
+        .then(resp => {
+            fetch(resp.uri)
+            .then(data => data.blob())
+            .then(img => {
+                console.log(storage)
+                const ref = storage.ref(`fotoSubida/${Date.now()}.jpg`)
+                ref.put(img)
+                .then(()=> {
+                    ref.getDownloadURL()
+                    .then(url => {
+                            this.setState({fotoSubida:url})
+                        }
+                    )
+                })
+            })
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+}
+
     publicarPost(text){
         db.collection('posts').add({
             owner:auth.currentUser.email,
@@ -41,6 +64,13 @@ class FotoCarrete extends Component {
     render() {
         return (
         <View style={styles.container}>
+
+
+                <View>
+                    <TouchableOpacity onPress={()=> this.subirfoto()}>
+                        <Text style={styles.botton}>Elegir foto del carrete</Text>
+                    </TouchableOpacity>
+                </View>
      
      {
         this.state.mostrarCamara ?
@@ -61,8 +91,7 @@ class FotoCarrete extends Component {
             </TouchableOpacity>
         </>
     }
-           
-           
+    
         </View>
         )
     }

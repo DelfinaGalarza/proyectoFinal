@@ -19,27 +19,27 @@ class Perfil extends Component {
     }
 
 
-    subirfoto(){
-        ImagePicker.launchImageLibraryAsync()
-        .then(resp => {
-            fetch(resp.uri)
-            .then(data => data.blob())
-            .then(img => {
-                console.log(storage)
-                const ref = storage.ref(`fotoSubida/${Date.now()}.jpg`)
-                ref.put(img)
-                .then(()=> {
-                    ref.getDownloadURL()
-                    .then(url => {
-                            this.setState({fotoSubida:url})
-                        }
-                    )
-                })
-            })
-            .catch(err => console.log(err))
-        })
-        .catch(err => console.log(err))
-}
+//     subirfoto(){
+//         ImagePicker.launchImageLibraryAsync()
+//         .then(resp => {
+//             fetch(resp.uri)
+//             .then(data => data.blob())
+//             .then(img => {
+//                 console.log(storage)
+//                 const ref = storage.ref(`fotoSubida/${Date.now()}.jpg`)
+//                 ref.put(img)
+//                 .then(()=> {
+//                     ref.getDownloadURL()
+//                     .then(url => {
+//                             this.setState({fotoSubida:url})
+//                         }
+//                     )
+//                 })
+//             })
+//             .catch(err => console.log(err))
+//         })
+//         .catch(err => console.log(err))
+// }
 
 
 render() {
@@ -55,11 +55,11 @@ render() {
         <Text style={styles.subtitle}> Publicaciones </Text>
         </View>
 
-        <View>
+        {/* <View>
                     <TouchableOpacity onPress={()=> this.subirfoto()}>
                         <Text style={styles.botton}>Subir foto del carrete</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
         {/* <View style={styles.lik}>
         <Text>{this.state.myLikes.length}</Text>
