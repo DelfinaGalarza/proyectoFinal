@@ -27,10 +27,7 @@ class LikesInd extends Component {
 }
 const styles = StyleSheet.create({
     comento: {
-        flexDirection: 'row',
-      
-      
-         
+        flexDirection: 'row',   
     },
     owner:{
     fontWeight: 'bold',

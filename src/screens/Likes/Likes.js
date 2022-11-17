@@ -10,39 +10,34 @@ class Likes extends Component {
       super (props)
       this.state = {
         id: props.route.params.id,
-        aLikes: [],
+        arrayLikes: [],
         data: {}
       }
     }
   
     componentDidMount(){
-    console.log (this.props);
-      db
-      .collection('posts')
-      .doc(this.state.id) //ya tengo claro que voy a recibir solo uno por eso despues no hago foreach
-      .onSnapshot(doc =>{ //solo tra un doc de regreso
-        this.setState ({
-          data: doc.data(), //se extrae y se guarda 
-          aLikes: doc.data().likes,
-        })
-        console.log (this.state.id);
-      })
+        db.collection('posts')
+        .doc(this.state.id)
+        .onSnapshot(doc => {
+            this.setState({
+                id: doc.id, 
+                arrayLikes: doc.data().likes})
+                 })
     } 
   
   
   
     render() {
-        console.log (this.props);
       return (
                 <View style={styles.container}>
 
                     
                     {
-                        this.state.aLikes !== 'null' ?
+                        this.state.arrayLikes != 'null' ?
                         <View >
                         <Text>Personas que van a la fiesta</Text>
                         <FlatList 
-                    data ={this.state.aLikes}
+                    data ={this.state.arrayLikes}
                     keyExtractor= {item => item.createdAt.toString()}
                     renderItem={({item}) => <LikesInd style={styles.li} likes={item} />}
                     />
@@ -67,7 +62,7 @@ class Likes extends Component {
   },
   li:{
     margin: 1000,
-    
+
   }
 })
 

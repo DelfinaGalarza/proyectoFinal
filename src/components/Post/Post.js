@@ -33,7 +33,6 @@ class Post extends Component {
        })
     }
 
-
     like(){
         db
         .collection('posts')
@@ -58,7 +57,7 @@ class Post extends Component {
         db.collection('posts')
         .doc(this.props.id)
         .update({
-            likes: firebase.firestore.FieldValue.arrayUnion({
+            likes: firebase.firestore.FieldValue.arrayRemove({
             owner: auth.currentUser.email, 
             createdAt: Date.now(),
           })
@@ -142,7 +141,7 @@ render() {
         <View style={styles.likes}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'Likes',
-                {id:this.props.id}
+                {id:this.props.id, cantLikes: this.state.cantLikes}
                 )}>
             <Text style={styles.agregar}>Quienes van?</Text>
 
