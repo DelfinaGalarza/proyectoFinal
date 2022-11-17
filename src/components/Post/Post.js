@@ -23,12 +23,14 @@ class Post extends Component {
             isMyPost: true,
         })
        }
-        let myLike = this.props.data.likes.includes(auth.currentUser.email)
-        if(myLike){
+       console.log(this.props.data.likes)
+       this.props.data.likes.forEach( doc => {
+        if(doc.owner == auth.currentUser.email){
             this.setState({
                 isMyLike:true,
             })
         }
+       })
     }
 
 

@@ -103,7 +103,7 @@ class Buscador extends Component {
             keyExtractor={(item) => item.id}
             renderItem= {({item}) => <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'OtroPerfil',
-                {email:this.props.data.owner}
+                {email:item.data.owner}
                 )}>
             <Text style={styles.user} >{item.data.owner} </Text> </TouchableOpacity> }
             /> 
