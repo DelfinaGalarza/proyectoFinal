@@ -29,7 +29,7 @@ class Register extends Component {
                 createdAt: Date.now(),
                 name: name,
                 bio: bio,
-                foto: this.state.foto,
+                foto: this.state.foto
 
             })
             .catch(err => console.log (err))

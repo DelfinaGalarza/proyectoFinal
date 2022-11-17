@@ -13,11 +13,23 @@ class Profile extends Component {
         this.state={
             myPosts:[],
             myLikes: [],
+            datos: {},
+            id:'',
         }
     }
 
 
     componentDidMount(){
+
+        db.collection('users')
+        .where('owner', '==', auth.currentUser.email)
+        .onSnapshot(docs=> {
+          docs.forEach(doc => {console.log(doc.data())
+            this.setState({
+            id: doc.id,
+            datos: doc.data()
+          })}) 
+        })
         db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
             let misPosteos = []
             docs.forEach(doc => {
@@ -50,6 +62,7 @@ class Profile extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
 
             <>
@@ -71,7 +84,7 @@ class Profile extends Component {
  
 
      <View style={styles.perfil}>
-  <Perfil  nPosts={this.state.myPosts.length} mail={auth.currentUser.email} />
+  <Perfil  nPosts={this.state.myPosts.length} mail={auth.currentUser.email} user={this.state.datos} />
 
      </View>
 

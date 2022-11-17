@@ -17,6 +17,7 @@ class Perfil extends Component {
 
 
 render() {
+    console.log(this.props.user)
     return (
         <View style={styles.perfil}>
 
@@ -28,6 +29,14 @@ render() {
         <Text>{this.props.nPosts}</Text>
         <Text style={styles.subtitle}> Publicaciones </Text>
         </View>
+
+        <View style={styles.own}>
+        <Text >{this.props.user.bio}</Text>
+        </View>
+
+        <Image style={styles.image} 
+                source={{uri: this.props.user.foto}}
+                resizeMode='contain'/>
 
         {/* <View>
                     <TouchableOpacity onPress={()=> this.subirfoto()}>
@@ -70,6 +79,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
+    image:{
+        height: 500,
+    },
    
 
     }

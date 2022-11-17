@@ -63,11 +63,13 @@ class Buscador extends Component {
              <Text style={styles.textbusc}> Search Party</Text>
      </View>
 
+
+{/* 
       <ImageBackground
     source= {require('../../../assets/fotobuscador.jpeg')}
     style= {{width: '100%', height: '95%'}}>
         </ImageBackground> 
-
+ */}
 
 
     <View style={styles.containertodo}> 
