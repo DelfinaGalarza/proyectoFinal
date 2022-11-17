@@ -12,6 +12,7 @@ import OtroPerfil from '../screens/OtroPerfil/OtroPerfil'
 import CamaraPost from '../screens/CamaraPost/CamaraPost'
 import FotoCarretePost from '../screens/FotoCarretePost/FotoCarretePost'
 import Likes from '../screens/Likes/Likes'
+import {FontAwesome} from '@expo/vector-icons'
 
 const Stack = createNativeStackNavigator()
 
@@ -84,6 +85,9 @@ class MainNavigation extends Component {
                       name='FotoCarretePost'
                       component={FotoCarretePost}
                       unmountOnBlur={true}
+                      // options = {
+                      //   {tabBarIcon: () => <FontAwesome name="picture" size={24} color="black" />}
+                      // }
                       />
 
                     <Stack.Screen

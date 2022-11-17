@@ -80,7 +80,7 @@ class Buscador extends Component {
              placeholder='Ingresa tu busqueda'
              value={this.state.busqueda}>
     </TextInput>
-    
+ 
 
  <Feather
           name="search"
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 15,
         borderRadius: 5,
-        backgroundColor: "rgb(148, 5, 245)"
+        backgroundColor: "rgb(148, 5, 245)", 
       },
 
 
@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "space-evenly",
+       
       },
 
       headerbusc:{
@@ -180,6 +181,7 @@ const styles = StyleSheet.create({
         height: 60,
         width: 200,
     },
+    
 
 })
 

@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         borderWidth: 5,
         borderColor: "rgb(148, 5, 245)",
+        height: 70, 
 
 
     },
