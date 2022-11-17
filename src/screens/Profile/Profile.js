@@ -5,6 +5,8 @@ import Post from '../../components/Post/Post'
 import Perfil from '../../components/Perfil/Perfil'
 import { TouchableOpacity } from 'react-native-web'
 
+
+
 class Profile extends Component {
     constructor(props){
         super(props)
@@ -13,6 +15,7 @@ class Profile extends Component {
             myLikes: [],
         }
     }
+
 
     componentDidMount(){
         db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
@@ -65,7 +68,7 @@ class Profile extends Component {
 
      </View>
 
-          
+ 
 
      <View style={styles.perfil}>
   <Perfil  nPosts={this.state.myPosts.length} mail={auth.currentUser.email} />

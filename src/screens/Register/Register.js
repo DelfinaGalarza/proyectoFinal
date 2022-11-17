@@ -2,6 +2,8 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'reac
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config'
 import CamaraRegistro from '../../components/CamaraRegistro/CamaraRegistro'
+import * as ImagePicker from 'expo-image-picker'
+import {storage} from '../../firebase/config'
 
 
 class Register extends Component {
@@ -13,9 +15,10 @@ class Register extends Component {
             password:'',
             error:'',
             name:'',
-            mostrarCamara: true,
+            // mostrarCamara: true,
             fotoUrl:'',
-            bio:''
+            bio:'',
+            foto:'',
         }
     }
 
@@ -25,8 +28,9 @@ class Register extends Component {
                 owner:auth.currentUser.email,
                 createdAt: Date.now(),
                 name: name,
-                foto: foto,
                 bio: bio,
+                foto: this.state.foto,
+
             })
             .catch(err => console.log (err))
                 )
@@ -41,6 +45,30 @@ class Register extends Component {
             mostrarCamara:false
         })
     }
+
+
+    subirfoto(){
+        ImagePicker.launchImageLibraryAsync()
+        .then(resp => {
+            fetch(resp.uri)
+            .then(data => data.blob())
+            .then(img => {
+                console.log(storage)
+                const ref = storage.ref(`foto/${Date.now()}.jpg`)
+                ref.put(img)
+                .then(()=> {
+                    ref.getDownloadURL()
+                    .then(url => {
+                            this.setState({foto:url})
+                        }
+                    )
+                })
+            })
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+}
+
 
     render() {
         return (
@@ -73,15 +101,21 @@ class Register extends Component {
                 keyboardType='default'
                 style={styles.usuario}
                 />
+                
+                <TouchableOpacity onPress={()=> this.subirfoto()}>
+                    <Text style={styles.botton}>Elija su foto de perfil</Text>
+                </TouchableOpacity>
+
+
             </View>
             
             <View style={styles.container}>
             {
-                this.state.mostrarCamara ?
-                <CamaraRegistro
+                // this.state.mostrarCamara ?
+                // <CamaraRegistro
 
-                cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
-                /> : 
+                // cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
+                // /> : 
                 <>
                     <TextInput
                     placeholder='Deja tu biografia'

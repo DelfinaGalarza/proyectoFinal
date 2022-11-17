@@ -1,4 +1,4 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity, CameraRoll } from 'react-native'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity, CameraRoll, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Camara from '../../components/Camara/Camara'
@@ -39,6 +39,23 @@ class Posts extends Component {
   
     render() {
         return (
+
+            <>
+            <View style={styles.headerhome}> 
+
+            <Image style={styles.imagehome}
+             source={require('../../../assets/iconoWP.png')}
+             resizeMode= 'contain'/>
+             <Text style={styles.texthome}> Party</Text>
+             
+             <View style={styles.cerrar}>
+             <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
+                <Text style={styles.cerrar}> Cerrar Sesion </Text>
+            </TouchableOpacity>
+            </View>
+
+     </View>
+
         <View style={styles.container}>
 
 
@@ -51,8 +68,9 @@ class Posts extends Component {
             </TouchableOpacity>
             
             
-           
-        </View>
+        </View>    
+         </>
+
         )
     }
 }
@@ -60,7 +78,11 @@ class Posts extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        backgroundColor: "rgb(148, 5, 245)"
+
+
     },
 
     sacarfoto:{
@@ -70,7 +92,27 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 15,
         borderRadius: 5,
-        backgroundColor: "rgb(148, 5, 245)"
-    }
+        backgroundColor: "white"
+    },
+
+    headerhome:{
+        backgroundColor: 'black', 
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '110',
+        padding: 14,
+    },
+
+    texthome:{
+        color: "rgb(148, 5, 245)",
+        textAlign: 'center', 
+        fontSize: '30px',
+    },
+
+    imagehome: {
+        height: 60,
+        width: 200,
+    },
+
 })
 export default Posts

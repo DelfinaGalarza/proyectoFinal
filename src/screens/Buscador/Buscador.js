@@ -65,11 +65,12 @@ class Buscador extends Component {
 
       <ImageBackground
     source= {require('../../../assets/fotobuscador.jpeg')}
-    style= {{width: '100%', height: '90%'}}>
-        </ImageBackground>
+    style= {{width: '100%', height: '95%'}}>
+        </ImageBackground> 
 
-     <View style={styles.containertodo}> 
- <View style={styles.container}> 
+
+
+    <View style={styles.containertodo}> 
 
 
     <TextInput style={ styles.buscador}
@@ -90,7 +91,6 @@ class Buscador extends Component {
     </TouchableOpacity>
 
 
-</View>   
 
          {
             this.state.loading ?
@@ -121,7 +121,12 @@ const styles = StyleSheet.create({
 
     containertodo:{
         flex:1, 
-        backgroundColor: "rgb(148, 5, 245)",
+        margin: 15,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
+        width: "90%",
     },
 
     container: {
@@ -130,6 +135,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-evenly",
         flexDirection: "row",
+        backgroundColor: "rgb(148, 5, 245)",
         width: "90%",
     
       },

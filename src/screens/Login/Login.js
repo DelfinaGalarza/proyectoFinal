@@ -39,7 +39,8 @@ class Login extends Component {
     <>
         <View> <Image style={styles.image}
         source={require('../../../assets/iconosinfondo.png')}
-        resizeMode= 'contain' /> </View>
+        resizeMode= 'contain' /> 
+        </View>
 
       <View style={styles.container}>
         <Text style= {styles.text}>Login</Text>

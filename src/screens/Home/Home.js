@@ -1,4 +1,4 @@
-import { Text, View, FlatList, StyleSheet, Image } from 'react-native'
+import { Text, View, FlatList, StyleSheet, Image, ActivityIndicator } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Post from '../../components/Post/Post'
@@ -41,8 +41,14 @@ class Home extends Component {
         <Text style={styles.text}> We Party</Text>
 
         <View style={styles.bottonarriba}>
-                 <a href="index.html">Inicio</a>
+                 <a href="index.html">Inicio</a>  
+                 
+                  <ActivityIndicator size='small' color='white' />
+                  
             </View>
+
+         
+
 
 </View>
         <View 

@@ -83,12 +83,17 @@ render() {
     return (
         <View style={styles.container}>
 
+            <Image style={styles.imageProfile}
+        source={require('../../../assets/icono.png')}
+                resizeMode = 'cover'
+            />  
+
         <View style={styles.container1}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'OtroPerfil',
                 {email:this.props.data.owner}
                 )}>
-            <Text >{this.props.data.owner}</Text>
+            <Text style={styles.textProfile}>{this.props.data.owner}</Text>
         </TouchableOpacity>
             
         </View>
@@ -242,11 +247,6 @@ const styles = StyleSheet.create({
         
     },
 
-    // foto:{
-    //     marginTop:50,
-    //     height:200,
-    //     width:200
-    // },
 
     subtitle:{
         fontWeight:700,
@@ -261,6 +261,19 @@ const styles = StyleSheet.create({
 
         
     },
+
+
+    imageProfile:{
+        height: 43,
+        width: 43,
+        borderRadius: 1000
+    },
+
+    textProfile:{
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+
 
     agregar:{
         color: 'white',
