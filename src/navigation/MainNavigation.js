@@ -85,9 +85,7 @@ class MainNavigation extends Component {
                       name='FotoCarretePost'
                       component={FotoCarretePost}
                       unmountOnBlur={true}
-                      // options = {
-                      //   {tabBarIcon: () => <FontAwesome name="picture" size={24} color="black" />}
-                      // }
+                     
                       />
 
                     <Stack.Screen

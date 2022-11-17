@@ -123,7 +123,7 @@ render() {
                     <FontAwesome name='user-plus' color='black' size={32} />
                 </TouchableOpacity> 
             :
-            <FontAwesome name='users' color='black' size={32} />
+            <FontAwesome name='users' color='black' size={25} />
 
         }
         </View>

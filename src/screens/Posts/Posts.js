@@ -4,6 +4,8 @@ import {db, auth} from '../../firebase/config'
 import Camara from '../../components/Camara/Camara'
 import Home from '../Home/Home'
 import { setStatusBarBackgroundColor } from 'expo-status-bar'
+import { AntDesign } from '@expo/vector-icons'; 
+
 
 class Posts extends Component {
   
@@ -60,13 +62,15 @@ class Posts extends Component {
 
 
             <TouchableOpacity onPress={()=> this.props.navigation.navigate('CamaraPost')}>
-                    <Text style={styles.sacarfoto}> Tomar foto </Text>
+                    {/* <Text style={styles.sacarfoto}> Tomar foto </Text> */}
+                    <AntDesign name="camera" size={100} color="black" />
             </TouchableOpacity>
-
+            <View style={styles.picture}> 
             <TouchableOpacity onPress={()=>this.props.navigation.navigate('FotoCarretePost')}>
-                    <Text style={styles.sacarfoto}> Seleccionar del carrete </Text>
+                    {/* <Text style={styles.sacarfoto}> Seleccionar del carrete </Text> */}
+                <AntDesign name="picture" size={100} color="black" />
             </TouchableOpacity>
-            
+            </View> 
             
         </View>    
          </>
@@ -114,5 +118,8 @@ const styles = StyleSheet.create({
         width: 200,
     },
 
+    picture: {
+     
+    }
 })
 export default Posts

@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         borderRadius: 5,
         backgroundColor: "rgb(148, 5, 245)", 
+        flex:'row',
       },
 
 
