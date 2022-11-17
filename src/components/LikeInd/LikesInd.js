@@ -1,6 +1,6 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native'
 import React, { Component } from 'react'
-import {auth} from "../../firebase/config"
+import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 
 class LikesInd extends Component {
@@ -14,9 +14,12 @@ class LikesInd extends Component {
   return (
     <View style= {styles.comento}>
 
-        <Text style= {styles.owner}>
-            {this.props.likes.owner}
-        </Text>
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+                'OtroPerfil',
+                {email:this.props.likes.owner}
+                )}>
+            <Text >{this.props.likes.owner}</Text>
+        </TouchableOpacity>
         
     </View>
   )
@@ -30,7 +33,8 @@ const styles = StyleSheet.create({
          
     },
     owner:{
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 10
     }
 })
  

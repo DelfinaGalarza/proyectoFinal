@@ -7,8 +7,7 @@ import {FontAwesome} from '@expo/vector-icons'
 
 
 class Post extends Component {
-
-    constructor(props){
+ constructor(props){
         super(props)
         this.state = {
             isMyLike: false,
@@ -108,14 +107,17 @@ render() {
         <View style={styles.like}>
             <Text>{this.state.cantLikes} van</Text>
         {
-            this.state.isMyLike ?
+            this.state.isMyLike && this.state.isMyPost == false ?
                 <TouchableOpacity onPress={()=> this.unlike()}>
                     <FontAwesome name='check' color='black' size={32} />
                 </TouchableOpacity>
-            :
+            : this.state.isMyLike == false && this.state.isMyPost == false ?
                 <TouchableOpacity onPress={()=> this.like()}>
                     <FontAwesome name='user-plus' color='black' size={32} />
-                </TouchableOpacity>
+                </TouchableOpacity> 
+            :
+            <FontAwesome name='users' color='black' size={32} />
+
         }
         </View>
         
@@ -277,8 +279,6 @@ const styles = StyleSheet.create({
     comentario: {
         color: "rgb(148, 5, 245)",
     },
-
-   
 
     }
     )

@@ -16,42 +16,58 @@ class Likes extends Component {
     }
   
     componentDidMount(){
+    console.log (this.props);
       db
       .collection('posts')
       .doc(this.state.id) //ya tengo claro que voy a recibir solo uno por eso despues no hago foreach
       .onSnapshot(doc =>{ //solo tra un doc de regreso
         this.setState ({
           data: doc.data(), //se extrae y se guarda 
-          aLikes: doc.data().likes
+          aLikes: doc.data().likes,
         })
+        console.log (this.state.id);
       })
     } 
   
   
   
     render() {
+        console.log (this.props);
       return (
-        <View>
-                <View>
+                <View style={styles.container}>
 
-                    <Text>Likes en esta publicación</Text>
                     
-                    <FlatList 
+                    {
+                        this.state.aLikes !== 'null' ?
+                        <View >
+                        <Text>Personas que van a la fiesta</Text>
+                        <FlatList 
                     data ={this.state.aLikes}
                     keyExtractor= {item => item.createdAt.toString()}
-                    renderItem={({item}) => <LikesInd likes={item} />}
+                    renderItem={({item}) => <LikesInd style={styles.li} likes={item} />}
                     />
+                        </View>
+                     :
+                    <Text> Por ahora nadie va a esta fiesta </Text>
+                    }
+                    
                 </View>
-            
-          
-        </View>
       )
     }
   }
 
     const styles = StyleSheet.create({
-  input:{
-      borderWidth: 1,
+        container:{
+            borderWidth: 1,
+            display: 'flex',
+            flexWrap: 'wrap',
+            flex: 1,
+            flexDirection: 'column',
+            alignItems: 'center',
+  },
+  li:{
+    margin: 1000,
+    
   }
 })
 
