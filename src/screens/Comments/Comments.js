@@ -67,14 +67,14 @@ class Comments extends Component {
         
       <View>
       <TextInput
-      placeholder= 'Escribi un comentario' 
+      placeholder= 'Escribi tu comentario' 
       style = {styles.input}
       keyboardType= 'default'
       onChangeText ={texto=> this.setState({comentario: texto})}
       value= {this.state.comentario}
       />
     <TouchableOpacity onPress={()=>this.enviarComentarios(this.state.comentario)}>
-      <Text>Enviar comentario</Text>
+      <Text style={styles.enviar}>Enviar comentario</Text>
     </TouchableOpacity>
       </View>
       </View>
@@ -88,9 +88,14 @@ const styles = StyleSheet.create({
       marginTop: 10,
       backgroundColor: 'black',
       color: 'white',
+      height: 50,
+      fontWeight: 'bold',
   },
   titulo:{
     marginBottom: 30,
+  },
+  enviar:{
+    marginTop: 10, 
   }
 })
 

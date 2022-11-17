@@ -30,18 +30,17 @@ const styles = StyleSheet.create({
     comento: {
         flexDirection: 'row',
         marginTop: 10,
-      
-      
-         
     },
+
     owner:{
     fontWeight: 'bold',
     marginRight: 5,
-    
     },
+    
     comentario: {
     
     }
 })
  
 export default CommentsInd
+

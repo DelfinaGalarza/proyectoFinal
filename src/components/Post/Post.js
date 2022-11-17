@@ -144,7 +144,7 @@ render() {
                 'Likes',
                 {id:this.props.id}
                 )}>
-            <Text style={styles.agregar}>Quienes van</Text>
+            <Text style={styles.agregar}>Quienes van?</Text>
 
         </TouchableOpacity>
         </View>
@@ -154,7 +154,7 @@ render() {
         <View style={styles.container4}>
 
             <View>
-            <Text style={styles.subtitle}>Descripcion: {this.props.data.description}</Text>
+            <Text style={styles.subtitle}>Descripción: {this.props.data.description}</Text>
             </View>
             
             
@@ -165,7 +165,7 @@ render() {
                     'Comments',
                     {id:this.props.id}
                     )}>
-                <Text style={styles.comentario}>ver los {this.state.cantComments} comentarios</Text>
+                <Text style={styles.comentario}>Ver los {this.state.cantComments} comentarios</Text>
     
             </TouchableOpacity> :
 
@@ -293,6 +293,8 @@ const styles = StyleSheet.create({
     },
     comentario: {
         color: "rgb(148, 5, 245)",
+        marginTop: 5,
+        alignItems: 'center',
     },
 
     }

@@ -59,20 +59,21 @@ class Posts extends Component {
      </View>
 
         <View style={styles.container}>
+            <Text style={styles.subtitulo}> Subir una publicación</Text>
 
 
             <TouchableOpacity onPress={()=> this.props.navigation.navigate('CamaraPost')}>
                     {/* <Text style={styles.sacarfoto}> Tomar foto </Text> */}
                     <AntDesign name="camera" size={100} color="black" />
             </TouchableOpacity>
-            <View style={styles.picture}> 
+           
             <TouchableOpacity onPress={()=>this.props.navigation.navigate('FotoCarretePost')}>
                     {/* <Text style={styles.sacarfoto}> Seleccionar del carrete </Text> */}
                 <AntDesign name="picture" size={100} color="black" />
             </TouchableOpacity>
             </View> 
             
-        </View>    
+          
          </>
 
         )
@@ -118,8 +119,12 @@ const styles = StyleSheet.create({
         width: 200,
     },
 
-    picture: {
-     
+    subtitulo:{
+        marginTop: 5, 
+        fontSize: 20,
+        fontWeight: 'bold',
+      
     }
+
 })
 export default Posts
