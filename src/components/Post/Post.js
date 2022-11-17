@@ -232,7 +232,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     },
     like: {
-        marginBottom: 20
+        marginBottom: 20,
+       
     },
     likes: {
         marginBottom: 20
