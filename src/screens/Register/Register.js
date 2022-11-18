@@ -105,7 +105,7 @@ class Register extends Component {
                 />
               <View style={styles.ftoperfil}>
                 <TouchableOpacity onPress={()=> this.subirfoto()}>
-                    <AntDesign name="picture" size={40} color="black" />
+                    <AntDesign name="picture" size={60} color="black" />
                 </TouchableOpacity>
                 <Text style={styles.botton}>Elija su foto de perfil</Text>
               </View>  
@@ -129,10 +129,11 @@ class Register extends Component {
                 // cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
                 // /> : 
                 <>
-                    
+                <View style={styles.reg}>  
                 <TouchableOpacity onPress={()=> this.registrar(this.state.email, this.state.password, this.state.name, this.state.fotoUrl, this.state.bio)}>
                     <Text> Registrar usuario</Text>
                 </TouchableOpacity>
+                </View>  
                 {/* <TouchableOpacity onPress={()=> this.reintentar(this.state.description)}>
                     <Text> Sacar otra foto</Text>
                 </TouchableOpacity> */}
@@ -172,7 +173,8 @@ const styles = StyleSheet.create({
     },
     input:{
         borderWidth:1,
-        marginTop: 60,  
+        marginTop: 60, 
+         height: 30,
     },
 
     container1:{
@@ -190,18 +192,21 @@ const styles = StyleSheet.create({
          marginTop:5,
          marginBottom: 5,
          borderWidth:1,
+         height:25,
 
     },
   password: {
     marginTop:5,
     marginBottom: 5,
     borderWidth:1,
+    height:25,
 
 },
  usuario:{
     marginTop:5,
     marginBottom: 5,
     borderWidth:1,
+    height:25,
  },
 loguear:{
     flexDirection: 'row',
@@ -210,7 +215,8 @@ loguear:{
 },
 log:{
     marginLeft: 10, 
-    
+    textDecorationLine:'underline'
+,    
 
 
 },
@@ -218,8 +224,8 @@ errores:{
     marginTop: 10,
     marginLeft: 5,
     fontWeight: 'bold',
-    color: 'black',
     justifyContent: 'center',
+   
 },
 ftoperfil:{
     display: 'flex',
@@ -232,8 +238,16 @@ ftoperfil:{
 },
 titulo:{
   marginTop: 15,
-    textAlign: 'center',
+  height: 70,
+  fontSize: 30,
+  justifyContent: 'center',
+  flex: 'row',
+  marginTop: 2,
   
+},
+reg:{
+    fontWeight: 'bold',
+    fontSize: 30,
 }
     
 })
