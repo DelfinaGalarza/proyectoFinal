@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         marginTop: 5, 
         fontSize: 20,
         fontWeight: 'bold',
-      
+      textDecorationLine: 'underline',
     }
 
 })

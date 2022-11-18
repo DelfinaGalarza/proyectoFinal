@@ -4,6 +4,8 @@ import { auth, db } from '../../firebase/config'
 import CamaraRegistro from '../../components/CamaraRegistro/CamaraRegistro'
 import * as ImagePicker from 'expo-image-picker'
 import {storage} from '../../firebase/config'
+import { AntDesign } from '@expo/vector-icons'; 
+
 
 
 class Register extends Component {
@@ -88,28 +90,38 @@ class Register extends Component {
                 />
                 <TextInput
                     style={styles.password}
-                    placeholder='Escribi tu password'
+                    placeholder='Escribi tu contraseña'
                     onChangeText={text => this.setState({password: text})}
                     value={this.state.password}
                     secureTextEntry={true}
                 />
 
                 <TextInput
-                placeholder='nombre de usuario'
+                placeholder='Nombre de usuario'
                 onChangeText={text => this.setState({name: text})}
                 value={this.state.name}
                 keyboardType='default'
                 style={styles.usuario}
                 />
-                
+              <View style={styles.ftoperfil}>
                 <TouchableOpacity onPress={()=> this.subirfoto()}>
-                    <Text style={styles.botton}>Elija su foto de perfil</Text>
+                    <AntDesign name="picture" size={40} color="black" />
                 </TouchableOpacity>
+                <Text style={styles.botton}>Elija su foto de perfil</Text>
+              </View>  
+
+                <TextInput
+                    placeholder='Deja tu biografia'
+                    onChangeText={text => this.setState({bio: text})}
+                    value={this.state.bio}
+                    keyboardType='default'
+                    style={styles.input}
+                    />
 
 
             </View>
             
-            <View style={styles.container}>
+            <View style={styles.container1}>
             {
                 // this.state.mostrarCamara ?
                 // <CamaraRegistro
@@ -117,13 +129,7 @@ class Register extends Component {
                 // cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
                 // /> : 
                 <>
-                    <TextInput
-                    placeholder='Deja tu biografia'
-                    onChangeText={text => this.setState({bio: text})}
-                    value={this.state.bio}
-                    keyboardType='default'
-                    style={styles.input}
-                    />
+                    
                 <TouchableOpacity onPress={()=> this.registrar(this.state.email, this.state.password, this.state.name, this.state.fotoUrl, this.state.bio)}>
                     <Text> Registrar usuario</Text>
                 </TouchableOpacity>
@@ -131,8 +137,16 @@ class Register extends Component {
                     <Text> Sacar otra foto</Text>
                 </TouchableOpacity> */}
             </>
+
+            
         }
-                
+          <View style={styles.errores}>
+            {
+                    this.state.error !== '' ?
+                    <Text>{this.state.error}</Text>:
+                    ''
+                }
+                </View>  
             </View>
         
                
@@ -143,12 +157,7 @@ class Register extends Component {
                        <View style={styles.log}> <Text>Logueate</Text></View>
                     </TouchableOpacity>
                 </View>
-                
-                {
-                    this.state.error !== '' ?
-                    <Text>{this.state.error}</Text>:
-                    ''
-                }
+            
             </View>
        </> )
         
@@ -162,7 +171,14 @@ const styles = StyleSheet.create({
         paddingHorizontal:32
     },
     input:{
-        borderWidth:1
+        borderWidth:1,
+        marginTop: 60,  
+    },
+
+    container1:{
+        flex:1,
+        justifyContent:'center',
+        
     },
     image: {
         marginTop: 15,
@@ -189,6 +205,7 @@ const styles = StyleSheet.create({
  },
 loguear:{
     flexDirection: 'row',
+    marginBottom: 30,
 
 },
 log:{
@@ -196,6 +213,27 @@ log:{
     
 
 
+},
+errores:{
+    marginTop: 10,
+    marginLeft: 5,
+    fontWeight: 'bold',
+    color: 'black',
+    justifyContent: 'center',
+},
+ftoperfil:{
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    flex:1,
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+},
+titulo:{
+  marginTop: 15,
+    textAlign: 'center',
+  
 }
     
 })
