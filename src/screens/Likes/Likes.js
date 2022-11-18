@@ -20,10 +20,11 @@ class Likes extends Component {
         .doc(this.state.id)
         .onSnapshot(doc => {
             this.setState({
-                id: doc.id, 
+                data: doc.data(),
                 arrayLikes: doc.data().likes})
-                 })
-    } 
+              console.log(this.state.arrayLikes)
+            })
+          } 
   
   
   
@@ -33,7 +34,7 @@ class Likes extends Component {
 
                     
                     {
-                        this.state.arrayLikes != 'null' ?
+                        this.state.arrayLikes > 0 ?
                         <View >
                         <Text>Personas que van a la fiesta</Text>
                         <FlatList 
