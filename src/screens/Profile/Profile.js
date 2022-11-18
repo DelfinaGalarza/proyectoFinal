@@ -124,21 +124,25 @@ const styles = StyleSheet.create({
 
     headerhome:{
         backgroundColor: 'black', 
-        alignItems: 'center',
-        justifyContent: 'center',
         height: '110',
         padding: 14,
+        justifyContent: 'space-between',
+
     },
 
     texthome:{
         color: "rgb(148, 5, 245)",
         textAlign: 'center', 
         fontSize: '30px',
+        justifyContent: 'center',
+
+
     },
 
     imagehome: {
         height: 60,
-        width: 200,
+        justifyContent:'center',
+
     },
 
     perfil:{
@@ -146,8 +150,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         color: "white",
         height: 80,
-        marginTop: 40,
+        marginTop: 20,
         justifyContent: 'center',
+        fontWeight: 'bold',
+
 
 
     },

@@ -257,6 +257,7 @@ const styles = StyleSheet.create({
     subtitle:{
         fontWeight:700,
         color: 'black',
+        marginTop: 20,
 
     },
     image:{
@@ -264,7 +265,6 @@ const styles = StyleSheet.create({
         width: 273,
         border: 'black',
         marginBottom: 30,
-
         
     },
 
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
     imageProfile:{
         height: 43,
         width: 43,
-        borderRadius: 1000
+        borderRadius: 1000,
     },
 
     textProfile:{
@@ -292,9 +292,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black'
     },
 
-    descripcion:{
-        color: 'black',
-    },
+ 
     comentario: {
         color: "rgb(148, 5, 245)",
         marginTop: 5,
