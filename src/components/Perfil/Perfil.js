@@ -21,6 +21,10 @@ render() {
     return (
         <View style={styles.perfil}>
 
+        <Image style={styles.image} 
+                source={{uri: this.props.user.foto}}
+                resizeMode='cover'/>
+                
         <View style={styles.own}>
         <Text >{this.props.mail}</Text>
         </View>
@@ -34,9 +38,7 @@ render() {
         <Text >{this.props.user.bio}</Text>
         </View>
 
-        <Image style={styles.image} 
-                source={{uri: this.props.user.foto}}
-                resizeMode='contain'/>
+
 
         {/* <View>
                     <TouchableOpacity onPress={()=> this.subirfoto()}>
@@ -65,12 +67,13 @@ render() {
 
 const styles = StyleSheet.create({
     perfil:{
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        margin: 10,
+        border: 100,
     },
     own:{
-        marginTop: 10,
+        margin: 10,
     },
     pub:{
         alignItems: 'center',
@@ -80,9 +83,12 @@ const styles = StyleSheet.create({
     },
 
     image:{
-        height: 500,
-    },
-   
+        height: 50,
+        width: 50,
+        borderRadius: 1000,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
 
     }
     )

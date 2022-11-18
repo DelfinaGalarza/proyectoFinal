@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image,  FlatList} from 'react-native'
+import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image,  FlatList, ActivityIndicator} from 'react-native'
 import React, { Component} from 'react'
 import {db} from '../../firebase/config'
 import {auth} from '../../firebase/config'
@@ -22,7 +22,7 @@ class Buscador extends Component {
 
     //aca tengo que poner el array con todos los usuarios posibles
     componentDidMount(){
-        db.collection('users').onSnapshot(docs => {
+        db.collection('users').limit(5).onSnapshot(docs => {
             let misUsuarios = []
             docs.forEach(doc => {
                 misUsuarios.push({
@@ -88,14 +88,19 @@ class Buscador extends Component {
           style={{ marginLeft: 1 }}
         />
 
-    <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
+   <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
     <Text style={styles.buscar}> Buscar</Text>
     </TouchableOpacity>
 
+                  <ActivityIndicator size='small' color='white' />
+                  
 
+</View>          
 
-         {
-            this.state.loading ?
+ 
+
+<View style={styles.resultados}> 
+         {this.state.loading ?
             '':
             
             <FlatList 
@@ -108,8 +113,8 @@ class Buscador extends Component {
             <Text style={styles.user} >{item.data.owner} </Text> </TouchableOpacity> }
             /> 
          }
-           
-</View>
+
+ </View>          
 
 
 
@@ -123,33 +128,27 @@ const styles = StyleSheet.create({
 
     containertodo:{
         flex:1, 
-        margin: 15,
         justifyContent: "flex-start",
         alignItems: "center",
         justifyContent: "space-evenly",
         flexDirection: "row",
-        width: "90%",
+        width: "100%",
+        backgroundColor: "rgb(148, 5, 245)", 
+        borderWidth: 15,
+        borderColor: "rgb(148, 5, 245)", 
     },
 
-    container: {
-        margin: 15,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        justifyContent: "space-evenly",
-        flexDirection: "row",
-        backgroundColor: "rgb(148, 5, 245)",
-        width: "90%",
-    
-      },
+ 
       user:{
         borderColor: '#ccc',
         borderWidth: 2,
-        marginBottom: 10,
+        marginBottom: 15,
         padding: 10,
         fontSize: 15,
         borderRadius: 5,
         backgroundColor: "rgb(148, 5, 245)", 
         flex:'row',
+        
       },
 
 
@@ -162,6 +161,19 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-evenly",
        
+      },
+
+      resultados:{
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
+        backgroundColor: "rgb(148, 5, 245)",
+        borderWidth: 15,
+        borderColor: "rgb(148, 5, 245)", 
+
+
       },
 
       headerbusc:{

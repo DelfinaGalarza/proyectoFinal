@@ -142,10 +142,12 @@ const styles = StyleSheet.create({
     },
 
     perfil:{
-        justifyContent: 'space-between',
-        borderWidth: 5,
-        borderColor: "rgb(148, 5, 245)",
-        height: 70, 
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        color: "white",
+        height: 80,
+        marginTop: 40,
+        justifyContent: 'center',
 
 
     },

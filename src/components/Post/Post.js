@@ -15,6 +15,8 @@ class Post extends Component {
             cantComments: props.data.comments.length,
             myPosts: [],
             isMyPost:false,
+            foto: ''
+
         }
     }
     componentDidMount(){
@@ -88,6 +90,8 @@ render() {
         source={require('../../../assets/icono.png')}
                 resizeMode = 'cover'
             />  
+
+
 
         <View style={styles.container1}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
