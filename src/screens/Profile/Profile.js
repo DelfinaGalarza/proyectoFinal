@@ -20,7 +20,6 @@ class Profile extends Component {
 
 
     componentDidMount(){
-
         db.collection('users')
         .where('owner', '==', auth.currentUser.email)
         .onSnapshot(docs=> {

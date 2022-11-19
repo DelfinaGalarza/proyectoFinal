@@ -29,21 +29,21 @@ class Likes extends Component {
   
   
     render() {
+      console.log(this.state.arrayLikes)
       return (
                 <View style={styles.container}>
-
-                    
                     {
-                        this.state.arrayLikes > 0 ?
+                        this.state.arrayLikes.length > 0 ?
+
                         <View >
                         <Text>Personas que van a la fiesta</Text>
                         <FlatList 
                     data ={this.state.arrayLikes}
-                    keyExtractor= {item => item.createdAt.toString()}
+                    keyExtractor= {item => item.toString()}
                     renderItem={({item}) => <LikesInd style={styles.li} likes={item} />}
                     />
                         </View>
-                     :
+                    :
                     <Text> Por ahora nadie va a esta fiesta </Text>
                     }
                     

@@ -15,8 +15,9 @@ class Post extends Component {
             cantComments: props.data.comments.length,
             myPosts: [],
             isMyPost:false,
-            foto: ''
-
+            foto: '',
+            datos:{},
+            id: ''
         }
     }
     componentDidMount(){
@@ -33,6 +34,16 @@ class Post extends Component {
             })
         }
        })
+        db.collection('users')
+        .where('owner', '==', this.props.data.owner)
+        .onSnapshot(docs=> {
+        docs.forEach(doc => {console.log(doc.data())
+            this.setState({
+            id: doc.id,
+            datos: doc.data()
+        })}) 
+        console.log(this.state.datos.name)
+        })
     }
 
     like(){
@@ -41,8 +52,7 @@ class Post extends Component {
         .doc(this.props.id)
         .update({
             likes: firebase.firestore.FieldValue.arrayUnion({
-            owner: auth.currentUser.email, 
-            createdAt:Date.now(),
+            owner: auth.currentUser.email
           })
         })
         .then(resp => {
@@ -60,8 +70,7 @@ class Post extends Component {
         .doc(this.props.id)
         .update({
             likes: firebase.firestore.FieldValue.arrayRemove({
-            owner: auth.currentUser.email, 
-            createdAt: Date.now(),
+            owner: auth.currentUser.email 
           })
         })
         .then(resp => {
@@ -98,7 +107,7 @@ render() {
                 'OtroPerfil',
                 {email:this.props.data.owner}
                 )}>
-            <Text style={styles.textProfile}>{this.props.data.owner}</Text>
+            <Text style={styles.textProfile}>{this.state.datos.name}</Text>
         </TouchableOpacity>
             
         </View>

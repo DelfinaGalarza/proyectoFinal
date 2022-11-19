@@ -7,22 +7,39 @@ class LikesInd extends Component {
     constructor(props) {
     super (props)
     this.state = {  
-        LikeI: []
+        LikeI: [],
+        datos: {},
+        id:'',
     }}
 
-    render () {
-  return (
-    <View style= {styles.comento}>
+    componentDidMount(){
 
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+        db.collection('users')
+        .where('owner', '==', this.props.likes.owner)
+        .onSnapshot(docs=> {
+        docs.forEach(doc => {console.log(doc.data())
+            this.setState({
+            id: doc.id,
+            datos: doc.data()
+        })}) 
+        console.log(this.state.datos.name)
+        })
+    }
+
+    render () {
+    
+        return (
+
+    <View style= {styles.comento}>
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate(
                 'OtroPerfil',
                 {email:this.props.likes.owner}
                 )}>
-            <Text >{this.props.likes.owner}</Text>
+            <Text >{this.state.datos.name}</Text>
         </TouchableOpacity>
         
     </View>
-  )
+)
 }
 }
 const styles = StyleSheet.create({
@@ -34,5 +51,5 @@ const styles = StyleSheet.create({
     marginTop: 10
     }
 })
- 
+
 export default LikesInd
