@@ -12,11 +12,12 @@ class Perfil extends Component {
             fotoSubida: "", 
         }
     }
-
+    componentDidMount(){
+    }
 
 
 render() {
-    console.log(this.state.datos)
+    console.log(this.props.user)
     return (
         <View style={styles.perfil}>
             
@@ -27,7 +28,7 @@ render() {
                 resizeMode='cover'/>
                 
         <View style={styles.own}>
-        <Text >{this.props.user.name}</Text>
+        <Text >{this.props.mail}</Text>
         </View>
 
         </View>

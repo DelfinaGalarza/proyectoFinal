@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
+import { isSearchBarAvailableForCurrentPlatform } from 'react-native-screens'
 
 
 
@@ -13,11 +14,12 @@ class Post extends Component {
             isMyLike: false,
             cantLikes: props.data.likes.length, 
             cantComments: props.data.comments.length,
-            myPosts: [],
             isMyPost:false,
             foto: '',
+            id: '',
             datos:{},
-            id: ''
+            myPosts: [],
+
         }
     }
     componentDidMount(){
@@ -33,6 +35,7 @@ class Post extends Component {
                 isMyLike:true,
             })
         }
+
        })
         db.collection('users')
         .where('owner', '==', this.props.data.owner)
@@ -42,7 +45,6 @@ class Post extends Component {
             id: doc.id,
             datos: doc.data()
         })}) 
-        console.log(this.state.datos.name)
         })
     }
 
@@ -94,13 +96,14 @@ class Post extends Component {
 render() {
     return (
         <View style={styles.container}>
+            
+            <View style={styles.circulo}>
 
             <Image style={styles.imageProfile}
-        source={require('../../../assets/icono.png')}
+                source={{uri: this.state.datos.foto}}
                 resizeMode = 'cover'
             />  
-
-
+ 
 
         <View style={styles.container1}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate (
@@ -110,6 +113,7 @@ render() {
             <Text style={styles.textProfile}>{this.state.datos.name}</Text>
         </TouchableOpacity>
             
+        </View>
         </View>
 
 
@@ -277,11 +281,20 @@ const styles = StyleSheet.create({
         
     },
 
+    circulo:{
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+
+    },
 
     imageProfile:{
-        height: 43,
-        width: 43,
+        height: 70,
+        width: 70,
         borderRadius: 1000,
+        marginBottom: 10,
     },
 
     textProfile:{
@@ -297,8 +310,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         padding: 10,
         fontSize: 15,
-        borderRadius: 5,
-        backgroundColor: 'black'
+        borderRadius: 20,
+        backgroundColor: 'black',
+
     },
 
  

@@ -1,9 +1,7 @@
 import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image,  FlatList, ActivityIndicator} from 'react-native'
 import React, { Component} from 'react'
 import {db} from '../../firebase/config'
-import {auth} from '../../firebase/config'
-import {SearchBar } from 'react-native'
-import { Feather, Entypo } from "@expo/vector-icons"
+import { Feather } from "@expo/vector-icons"
 import {ImageBackground} from 'react-native'
 
 
@@ -77,7 +75,7 @@ class Buscador extends Component {
 
     <TextInput style={ styles.buscador}
              onChangeText={ text => this.setState( {busqueda:text} )}
-             placeholder='Ingresa tu busqueda'
+             placeholder='Ingrese su busqueda'
              value={this.state.busqueda}>
     </TextInput>
  
@@ -91,10 +89,8 @@ class Buscador extends Component {
    <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
     <Text style={styles.buscar}> Buscar</Text>
     </TouchableOpacity>
-
                   <ActivityIndicator size='small' color='white' />
                   
-
 </View>          
 
  
@@ -106,13 +102,18 @@ class Buscador extends Component {
             <FlatList 
             data={this.state.users}
             keyExtractor={(item) => item.id}
-            renderItem= {({item}) => <TouchableOpacity onPress={()=> this.props.navigation.navigate (
+            renderItem= {({item}) => 
+            
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate (
                 'OtroPerfil',
                 {email:item.data.owner}
                 )}>
-            <Text style={styles.user} >{item.data.owner} </Text> </TouchableOpacity> }
+            <Text style={styles.user} >{item.data.name} </Text> 
+            {/* agregar que aparezca la imagen al lado del usuario */}
+            </TouchableOpacity> }
             /> 
          }
+
 
  </View>          
 

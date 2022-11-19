@@ -81,6 +81,16 @@ class Register extends Component {
         <View style={styles.container}>
             <View>
                 <View style={styles.titulo}><Text>Registrate</Text></View>
+                
+                <View style={styles.ftoperfil}>
+                <TouchableOpacity onPress={()=> this.subirfoto()}>
+                    <AntDesign name="picture" size={60} color="black" />
+                </TouchableOpacity>
+                <Text style={styles.botton}>Elija su foto de perfil</Text>
+              </View>  
+
+
+                
                 <TextInput
                     style={styles.email}
                     placeholder='Escribi tu email'
@@ -103,12 +113,6 @@ class Register extends Component {
                 keyboardType='default'
                 style={styles.usuario}
                 />
-              <View style={styles.ftoperfil}>
-                <TouchableOpacity onPress={()=> this.subirfoto()}>
-                    <AntDesign name="picture" size={60} color="black" />
-                </TouchableOpacity>
-                <Text style={styles.botton}>Elija su foto de perfil</Text>
-              </View>  
 
                 <TextInput
                     placeholder='Deja tu biografia'
@@ -117,7 +121,7 @@ class Register extends Component {
                     keyboardType='default'
                     style={styles.input}
                     />
-
+                
 
             </View>
             
@@ -173,14 +177,12 @@ const styles = StyleSheet.create({
     },
     input:{
         borderWidth:1,
-        marginTop: 60, 
          height: 30,
     },
 
     container1:{
         flex:1,
-        justifyContent:'center',
-        
+        justifyContent:'center',  
     },
     image: {
         marginTop: 15,
@@ -234,15 +236,19 @@ ftoperfil:{
     flex:1,
     width: '50%',
     alignItems: 'center',
+    justifyContent: 'center',
     justifyContent: 'space-around'
 },
+
 titulo:{
   marginTop: 15,
-  height: 70,
-  fontSize: 30,
+  height: 80,
+  fontSize: 300,
+  fontWeight: 'bold',
   justifyContent: 'center',
   flex: 'row',
   marginTop: 2,
+
   
 },
 reg:{

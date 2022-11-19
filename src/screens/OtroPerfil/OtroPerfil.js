@@ -52,7 +52,7 @@ class OtroPerfil extends Component {
             <Image style={styles.imagehome}
             source={require('../../../assets/iconoWP.png')}
             resizeMode= 'contain'/>
-            <Text style={styles.texthome}> You Party</Text>
+            <Text style={styles.texthome}> They Party</Text>
     </View>
  
    
