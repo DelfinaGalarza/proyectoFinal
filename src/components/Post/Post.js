@@ -215,24 +215,18 @@ render() {
 const styles = StyleSheet.create({
     container:{
         flexDirection: 'column',
-        padding: 40,
+        padding: 20,
         justifyContent:'space-between',
         alignItems:'center',
-        margin: 50,
-        marginBottom: 10,
+        marginBottom: 5,
         backgroundColor: 'white',
-        marginTop: 20,
+        marginTop: 5,
         flex: 1,
-        borderWidth: 3,
-        borderRadius: 10,
-        
-
-    
+        borderColor: 'black'
     },
     
     container1:{
         justifyContent: 'left',
-        backgroundColor: 'white',
         color: 'black',
         marginBottom: 30,
         width: '100%', 

@@ -31,12 +31,22 @@ class LikesInd extends Component {
         return (
 
     <View style= {styles.comento}>
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate(
+
+            <View style= {styles.p}>
+            <Image style={styles.image} 
+                source={{uri: this.state.datos.foto}}
+                resizeMode='cover'/>
+            </View>
+        
+            <View style= {styles.p}>
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate(
                 'OtroPerfil',
-                {email:this.props.likes.owner}
+                {email:this.state.datos.email}
                 )}>
             <Text >{this.state.datos.name}</Text>
-        </TouchableOpacity>
+            </TouchableOpacity>
+            </View> 
+        
         
     </View>
 )
@@ -45,11 +55,24 @@ class LikesInd extends Component {
 const styles = StyleSheet.create({
     comento: {
         flexDirection: 'row',   
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        margin: 10,
+        borderWidth: 2,
+        borderColor: 'black',
+        backgroundColor: 'white'
     },
     owner:{
     fontWeight: 'bold',
     marginTop: 10
-    }
+    },
+    image:{
+        height: 50,
+        width: 50,
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 })
 
 export default LikesInd

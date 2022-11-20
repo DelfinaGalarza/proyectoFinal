@@ -34,17 +34,22 @@ class Likes extends Component {
                 <View style={styles.container}>
                     {
                         this.state.arrayLikes.length > 0 ?
-
-                        <View >
-                        <Text>Personas que van a la fiesta</Text>
+                        <View style={styles.caja}>
+                        <View style={styles.titulo}>
+                        <Text style={styles.titulo}> Amigos que van a la fiesta</Text>
+                        </View>
+                        <View style={styles.lista}>
                         <FlatList 
                     data ={this.state.arrayLikes}
                     keyExtractor= {item => item.toString()}
                     renderItem={({item}) => <LikesInd style={styles.li} likes={item} />}
                     />
                         </View>
+                        </View>
                     :
-                    <Text> Por ahora nadie va a esta fiesta </Text>
+                    <View style={styles.caja}>
+                    <Text style={styles.titulo}> Por ahora nadie va a esta fiesta </Text>
+                    </View>
                     }
                     
                 </View>
@@ -59,8 +64,24 @@ class Likes extends Component {
             flexWrap: 'wrap',
             flex: 1,
             flexDirection: 'column',
-            alignItems: 'center',
+            backgroundColor: 'white'
   },
+        caja:{
+            borderWidth: 1,
+            display: 'flex',
+            flexWrap: 'wrap',
+            flex: 1,
+            flexDirection: 'column',
+            margin: 20,
+            padding: 40,
+        },
+        titulo:{
+          fontWeight: 'bold',
+          color: 'black'
+        },
+        lista:{
+          marginTop: 5
+        },
   li:{
     margin: 1000,
 
