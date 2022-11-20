@@ -86,9 +86,11 @@ class FotoCarrete extends Component {
             keyboardType='default'
             style={styles.input}
             />
+            <View style={styles.public}>
             <TouchableOpacity onPress={()=> this.publicarPost(this.state.description)}>
                 <Text>PUBLICAR POSTEO</Text>
             </TouchableOpacity>
+            </View>
         </>
     }
     
@@ -104,8 +106,21 @@ const styles = StyleSheet.create({
         flex:1,
     },
     input:{
-        height:32,
+        height:40,
         borderWidth:1,
+    
+
+    },
+    botton:{
+        marginBottom: 15, 
+        marginTop: 10, 
+        fontWeight: 'bold',
+       
+    },
+    public:{
+        marginTop: 10, 
+       
+    
     }
 })
 export default FotoCarrete
