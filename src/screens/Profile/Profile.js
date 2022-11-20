@@ -67,16 +67,17 @@ class Profile extends Component {
             <>
             <View style={styles.headerhome}> 
 
+            <View style={styles.cerrar}>
+             <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
+                <Text style={styles.cerrar}> Cerrar Sesion </Text>
+            </TouchableOpacity>
+            </View>
             <Image style={styles.imagehome}
              source={require('../../../assets/iconoWP.png')}
              resizeMode= 'contain'/>
              <Text style={styles.texthome}> You Party</Text>
              
-             <View style={styles.cerrar}>
-             <TouchableOpacity onPress= {()=> this.logOut()} style={styles.button}>
-                <Text style={styles.cerrar}> Cerrar Sesion </Text>
-            </TouchableOpacity>
-            </View>
+             
 
      </View>
 
@@ -159,8 +160,8 @@ const styles = StyleSheet.create({
 
     cerrar: {
         color: "rgb(148, 5, 245)",
-        alignItems: 'right', 
-        textDecorationLine: 'underline',
+        textAlign: 'right',
+       fontSize: 17, 
 
 
 

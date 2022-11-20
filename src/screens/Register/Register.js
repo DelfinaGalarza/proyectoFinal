@@ -1,10 +1,9 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config'
-import CamaraRegistro from '../../components/CamaraRegistro/CamaraRegistro'
-import * as ImagePicker from 'expo-image-picker'
+import * as ImagePicker from 'expo-image-picker' //traer el carrete
 import {storage} from '../../firebase/config'
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; // logo de la imagen
 
 
 
@@ -81,14 +80,6 @@ class Register extends Component {
         <View style={styles.container}>
             <View>
                 <View style={styles.titulo}><Text>Registrate</Text></View>
-                
-                <View style={styles.ftoperfil}>
-                <TouchableOpacity onPress={()=> this.subirfoto()}>
-                    <AntDesign name="picture" size={60} color="black" />
-                </TouchableOpacity>
-                <Text style={styles.botton}>Elija su foto de perfil</Text>
-              </View>  
-
 
                 
                 <TextInput
@@ -98,6 +89,14 @@ class Register extends Component {
                     value={this.state.email}
                 
                 />
+                 <TextInput
+                placeholder='Nombre de usuario'
+                onChangeText={text => this.setState({name: text})}
+                value={this.state.name}
+                keyboardType='default'
+                style={styles.usuario}
+                />
+
                 <TextInput
                     style={styles.password}
                     placeholder='Escribi tu contraseña'
@@ -106,13 +105,7 @@ class Register extends Component {
                     secureTextEntry={true}
                 />
 
-                <TextInput
-                placeholder='Nombre de usuario'
-                onChangeText={text => this.setState({name: text})}
-                value={this.state.name}
-                keyboardType='default'
-                style={styles.usuario}
-                />
+               
 
                 <TextInput
                     placeholder='Deja tu biografia'
@@ -122,6 +115,12 @@ class Register extends Component {
                     style={styles.input}
                     />
                 
+                <View style={styles.ftoperfil}>
+                <TouchableOpacity onPress={()=> this.subirfoto()}>
+                    <AntDesign name="picture" size={60} color="black" />
+                </TouchableOpacity>
+                <Text style={styles.botton}>Elija su foto de perfil</Text>
+              </View> 
 
             </View>
             
@@ -243,17 +242,11 @@ ftoperfil:{
 titulo:{
   marginTop: 15,
   height: 80,
-  fontSize: 300,
-  fontWeight: 'bold',
-  justifyContent: 'center',
-  flex: 'row',
-  marginTop: 2,
-
-  
 },
+
 reg:{
     fontWeight: 'bold',
-    fontSize: 30,
+
 }
     
 })
