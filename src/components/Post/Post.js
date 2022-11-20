@@ -218,11 +218,11 @@ const styles = StyleSheet.create({
         padding: 20,
         justifyContent:'space-between',
         alignItems:'center',
-        marginBottom: 5,
         backgroundColor: 'white',
-        marginTop: 5,
+        margin: 20,
         flex: 1,
-        borderColor: 'black'
+        borderColor: 'black',
+        borderRadius:15
     },
     
     container1:{
