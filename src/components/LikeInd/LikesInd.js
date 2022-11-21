@@ -59,12 +59,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 10,
         borderWidth: 2,
-        borderColor: 'black',
-        backgroundColor: 'white'
+        borderRadius: 15,
+        backgroundColor: 'white',
+        padding:5
     },
     owner:{
     fontWeight: 'bold',
-    marginTop: 10
+    marginTop: 10,
     },
     image:{
         height: 50,

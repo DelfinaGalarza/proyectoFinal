@@ -64,7 +64,6 @@ class Likes extends Component {
             flexWrap: 'wrap',
             flex: 1,
             flexDirection: 'column',
-            backgroundColor: 'white'
   },
         caja:{
             borderWidth: 1,
@@ -74,6 +73,7 @@ class Likes extends Component {
             flexDirection: 'column',
             margin: 20,
             padding: 40,
+            backgroundColor: '#622dbd'
         },
         titulo:{
           fontWeight: 'bold',
