@@ -16,7 +16,6 @@ class Register extends Component {
             password:'',
             error:'',
             name:'',
-            // mostrarCamara: true,
             fotoUrl:'',
             bio:'',
             foto:'',
@@ -126,20 +125,14 @@ class Register extends Component {
             
             <View style={styles.container1}>
             {
-                // this.state.mostrarCamara ?
-                // <CamaraRegistro
-
-                // cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
-                // /> : 
+            
                 <>
                 <View style={styles.reg}>  
                 <TouchableOpacity onPress={()=> this.registrar(this.state.email, this.state.password, this.state.name, this.state.fotoUrl, this.state.bio)}>
                     <Text> Registrar usuario</Text>
                 </TouchableOpacity>
                 </View>  
-                {/* <TouchableOpacity onPress={()=> this.reintentar(this.state.description)}>
-                    <Text> Sacar otra foto</Text>
-                </TouchableOpacity> */}
+                
             </>
 
             
