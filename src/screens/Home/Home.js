@@ -67,7 +67,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor: "#622dbd",    
+        backgroundColor: "rgb(148, 5, 245)", 
     },
     header:{
         backgroundColor: 'black', 
