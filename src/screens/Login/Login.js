@@ -126,7 +126,8 @@ const styles = StyleSheet.create({
         height: 15,  
       },
       reg: {
-          color: 'white',
+          
+          textDecorationLine:'underline',
         
           },
       error: {

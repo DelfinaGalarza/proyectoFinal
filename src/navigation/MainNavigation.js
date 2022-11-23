@@ -92,6 +92,7 @@ class MainNavigation extends Component {
                       name='Likes'
                       component={Likes}
                       unmountOnBlur={true}
+                  
                       />
 
               </Stack.Navigator>
