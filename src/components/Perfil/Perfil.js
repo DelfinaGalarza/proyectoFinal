@@ -12,8 +12,6 @@ class Perfil extends Component {
             fotoSubida: "", 
         }
     }
-    componentDidMount(){
-    }
 
 
 render() {

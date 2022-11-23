@@ -15,12 +15,15 @@ class Buscador extends Component {
             loading: true,
             users:[],
             busqueda: '',
+            userFiltrado: []
         }
     }
 
     //aca tengo que poner el array con todos los usuarios posibles
     componentDidMount(){
-        db.collection('users').limit(5).onSnapshot(docs => {
+        db.collection('users')
+        .limit(5)
+        .onSnapshot(docs => {
             let misUsuarios = []
             docs.forEach(doc => {
                 misUsuarios.push({
@@ -32,27 +35,24 @@ class Buscador extends Component {
                 users: misUsuarios,
             })
         })
-       
     }
 
     buscar(text){
-
         //Filtramos dependiendo de que recibe por parametro 
         let usersFilter = this.state.users.filter(elm => 
-            elm.data.owner.toUpperCase().includes(text.toUpperCase()))
+            elm.data.name.toUpperCase().includes(text.toUpperCase()))
 
         this.setState({
-            user: text,
-            users: usersFilter, 
+            userFiltrado: usersFilter, 
             loading: false
         })
     }
 
     render() {
-        console.log(this.state);
+        console.log(this.state.users);
         return (
         <>
-
+        
      <View style={styles.headerbusc}> 
             <Image style={styles.imagebusc}
              source={require('../../../assets/iconoWP.png')}
@@ -96,11 +96,12 @@ class Buscador extends Component {
  
 
 <View style={styles.resultados}> 
-         {this.state.loading ?
-            '':
+         
+        {this.state.loading ? ''
+            :
             
             <FlatList 
-            data={this.state.users}
+            data={this.state.userFiltrado}
             keyExtractor={(item) => item.id}
             renderItem= {({item}) => 
             
@@ -112,7 +113,8 @@ class Buscador extends Component {
             {/* agregar que aparezca la imagen al lado del usuario */}
             </TouchableOpacity> }
             /> 
-         }
+
+        }
 
 
  </View>          

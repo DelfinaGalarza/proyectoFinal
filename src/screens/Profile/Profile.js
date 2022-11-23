@@ -48,18 +48,7 @@ class Profile extends Component {
                 myPosts: misPosteos,
             })
         })
-        db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
-            let misLikes = []
-            docs.forEach(doc => {
-                misLikes.push({
-                    id: doc.id,
-                    data:doc.data().likes,
-                })
-            })
-            this.setState({
-                myLikes: misLikes,
-            })
-        })
+
     }
     logOut(){
         auth.signOut()
