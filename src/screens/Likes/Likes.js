@@ -77,7 +77,9 @@ class Likes extends Component {
         },
         titulo:{
           fontWeight: 'bold',
-          color: 'black'
+          color: 'white', 
+          fontSize: 25,
+          textAlign: 'center',
         },
         lista:{
           marginTop: 5
