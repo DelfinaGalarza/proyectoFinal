@@ -11,8 +11,8 @@ const firebaseConfig = {
   appId: "1:228057856152:web:7f13eccc6dd24e9cfbf8ed"
 };
 
-app.initializeApp(firebaseConfig)
+app.initializeApp(firebaseConfig) //nos permite conectar el proyecto con la base de datos 
 
-export const db = app.firestore()
-export const storage = app.storage()
-export const auth = firebase.auth()
+export const db = app.firestore() //base de datos
+export const storage = app.storage() // storage
+export const auth = firebase.auth() //autenticación

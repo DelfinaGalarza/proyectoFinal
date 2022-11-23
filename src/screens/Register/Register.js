@@ -16,7 +16,6 @@ class Register extends Component {
             password:'',
             error:'',
             name:'',
-            fotoUrl:'',
             bio:'',
             foto:'',
         }
@@ -39,13 +38,7 @@ class Register extends Component {
     }
 
     
-    cuandoSubaLaFoto(url){
-        this.setState({
-            fotoUrl:url,
-            mostrarCamara:false
-        })
-    }
-
+    
 
     subirfoto(){
         ImagePicker.launchImageLibraryAsync()
