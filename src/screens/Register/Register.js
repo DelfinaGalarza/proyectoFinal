@@ -18,6 +18,7 @@ class Register extends Component {
             name:'',
             bio:'',
             foto:'',
+          
         }
     }
 
@@ -121,7 +122,7 @@ class Register extends Component {
             
                 <>
                 <View style={styles.reg}>  
-                <TouchableOpacity onPress={()=> this.registrar(this.state.email, this.state.password, this.state.name, this.state.fotoUrl, this.state.bio)}>
+                <TouchableOpacity onPress={()=> this.registrar(this.state.email, this.state.password, this.state.name, this.state.foto, this.state.bio)}>
                     <Text> Registrar usuario</Text>
                 </TouchableOpacity>
                 </View>  
