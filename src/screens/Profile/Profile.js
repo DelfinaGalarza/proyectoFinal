@@ -17,9 +17,13 @@ class Profile extends Component {
             id:'',
         }
     }
+ 
 
 
     componentDidMount(){
+
+        // aca hacemos que aparezca la informacion del usuario
+
         db.collection('users')
         .where('owner', '==', auth.currentUser.email)
         .onSnapshot(docs=> {
@@ -29,6 +33,9 @@ class Profile extends Component {
             datos: doc.data()
           })}) 
         })
+
+        // aca hacemos que aparezcan los posts del usuario
+
         db.collection('posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
             let misPosteos = []
             docs.forEach(doc => {
@@ -92,10 +99,10 @@ class Profile extends Component {
         style={styles.container}
         >
             <FlatList
-                data={this.state.myPosts}
-                keyExtractor={(item)=> item.id.toString()}
+                data={this.state.myPosts} //array a recorrer => posteos
+                keyExtractor={(item)=> item.id.toString()} // id representa cada dato del array => como es numerico lo pasa a string
                 renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data}/>}
-                
+                //
             />
  
 
