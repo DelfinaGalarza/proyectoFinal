@@ -10,7 +10,7 @@ class OPerfil extends Component {
     constructor(props){
         super(props)
         this.state = {
-            
+            fotoSubida: "", 
         }
     }
     componentDidMount(){
@@ -21,17 +21,29 @@ render() {
     return (
         <View style={styles.perfil}>
 
-        <View style={styles.own}>
-        <Text >{this.props.name}</Text>
-        <Text >{this.props.mail}</Text>
+            <View style={styles.parte}>
+
+            <Image style={styles.image} 
+                    source={{uri: this.props.user.foto}}
+                    resizeMode='cover'/>
+                    
+            <View style={styles.own}>
+            <Text >{this.props.name}</Text>
+            </View>
+        
         </View>
 
         <View style={styles.pub}>
         <Text>{this.props.nPosts}</Text>
         <Text style={styles.subtitle}> Publicaciones </Text>
         </View>
+        
+        <View style={styles.own}>
+        <Text >{this.props.mail}</Text>
+        <Text >{this.props.user.bio}</Text>
         </View>
 
+        </View>
         
     )
 }
@@ -39,12 +51,14 @@ render() {
 
 const styles = StyleSheet.create({
     perfil:{
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        margin: 10,
+        border: 100,
     },
     own:{
-        marginTop: 10,
+        margin: 10,
+
     },
     pub:{
         alignItems: 'center',
@@ -53,7 +67,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-   
+    image:{
+        height: 50,
+        width: 50,
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    parte:{
+        alignItems: 'center',
+    }
 
     }
     )

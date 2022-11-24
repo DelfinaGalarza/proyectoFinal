@@ -26,7 +26,7 @@ render() {
                 resizeMode='cover'/>
                 
         <View style={styles.own}>
-        <Text >{this.props.mail}</Text>
+        <Text >{this.props.user.name}</Text>
         </View>
 
         </View>
@@ -37,6 +37,7 @@ render() {
         </View>
 
         <View style={styles.own}>
+        <Text >{this.props.mail}</Text>
         <Text >{this.props.user.bio}</Text>
         </View>
 

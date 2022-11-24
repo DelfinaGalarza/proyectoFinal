@@ -59,7 +59,7 @@ class OtroPerfil extends Component {
 {
     this.state.loading? <Text>Cargando...</Text>: <>
     <View style={styles.perfil}>
-            <OPerfil mail={this.state.usuario.owner} name={this.state.usuario.name} nPosts={this.state.susPosts.length} />
+            <OPerfil mail={this.state.usuario.owner} name={this.state.usuario.name} nPosts={this.state.susPosts.length} user={this.state.usuario} />
  
         </View>
  
