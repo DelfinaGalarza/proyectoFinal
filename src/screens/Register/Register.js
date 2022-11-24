@@ -4,8 +4,7 @@ import { auth, db } from '../../firebase/config'
 import * as ImagePicker from 'expo-image-picker' //traer el carrete
 import {storage} from '../../firebase/config'
 import { AntDesign } from '@expo/vector-icons'; // logo de la imagen
-
-
+ 
 
 class Register extends Component {
 
@@ -34,7 +33,7 @@ class Register extends Component {
             })
             .catch(err => console.log (err))
                 )
-                .then(()=>this.props.navigation.navigate('Home'))
+         .then(()=>this.props.navigation.navigate('TabNavigation'))
         .catch( err => this.setState({error:err.message}))
     }
 
@@ -86,7 +85,6 @@ class Register extends Component {
                 placeholder='Nombre de usuario'
                 onChangeText={text => this.setState({name: text})}
                 value={this.state.name}
-                keyboardType='default'
                 style={styles.usuario}
                 />
 
