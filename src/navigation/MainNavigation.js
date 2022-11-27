@@ -32,13 +32,6 @@ class MainNavigation extends Component {
               <Stack.Navigator
               initialRouteName={this.state.initialScreen}
               >
-                   <Stack.Screen
-                      name='Home'
-                      component={Home}
-                      options={{
-                        headerShown:false
-                      }}                      
-                      />
                    <Stack.Screen 
                       name='Login' 
                       component={Login}
